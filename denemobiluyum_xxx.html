@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niksar Bilim ve Sanat Merkezi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .logo {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+            width: 100%;
+            font-size: 1em;
+            color: #444;
+            vertical-align: middle;
+        }
+
+        .radio-buttons {
+            width: 100%;
+            text-align: left;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 5px;
+        }
+
+        .radio-group label {
+            flex: 1;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #007BFF;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s, border-color 0.3s;
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type="radio"]:checked {
+            background-color: #007BFF;
+            border-color: #007BFF;
+        }
+
+        input[type="radio"]:hover {
+            border-color: #0056b3;
+        }
+
+        .rating-label {
+            text-align: left;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 20px 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            width: 100px;
+            text-align: center;
+        }
+
+        .close-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .radio-group label {
+                flex: 1 1 45px;
+            }
+
+            form {
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            button {
+                width: 150px;
+                font-size: 1em;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            form {
+                max-width: 80%;
+            }
+
+            h2 {
+                font-size: 1.75em;
+            }
+
+            button {
+                width: 180px;
+                font-size: 1.05em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="https://imgbb.com/">
+            <img src="https://i.ibb.co/wh16bnb/Bilsem-logo.png" alt="Bilsem-logo" border="0" width="70">
+        </a>
+    </div>
+    <h2>BALDÖ: Bölüm-Alan-Dal Ölçeği</h2>
+
+
+<form id="questionnaire">
+
+<div class="rating-label">Hiç Katılmıyorum (1) >>>> Tamamen Katılıyorum (10)</div>
+
+<label data-meslek="    Acil Yardım ve Afet Yönetimi" style="display:none;"></label>
+<label>1. Afet öncesinde hazırlık, afet esnasında müdahale ve afet sonrasında iyileştirme ve geliştirme planlamaları yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q1" value="1"></label>
+<label>2<br><input type="radio" name="q1" value="2"></label>
+<label>3<br><input type="radio" name="q1" value="3"></label>
+<label>4<br><input type="radio" name="q1" value="4"></label>
+<label>5<br><input type="radio" name="q1" value="5"></label>
+<label>6<br><input type="radio" name="q1" value="6"></label>
+<label>7<br><input type="radio" name="q1" value="7"></label>
+<label>8<br><input type="radio" name="q1" value="8"></label>
+<label>9<br><input type="radio" name="q1" value="9"></label>
+<label>10<br><input type="radio" name="q1" value="10"></label>
+</div>
+</div>
+<hr>
+<label>2. Acil tıbbi müdahalede ve travmatik yaşantılarda soğukkanlı olabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q2" value="1"></label>
+<label>2<br><input type="radio" name="q2" value="2"></label>
+<label>3<br><input type="radio" name="q2" value="3"></label>
+<label>4<br><input type="radio" name="q2" value="4"></label>
+<label>5<br><input type="radio" name="q2" value="5"></label>
+<label>6<br><input type="radio" name="q2" value="6"></label>
+<label>7<br><input type="radio" name="q2" value="7"></label>
+<label>8<br><input type="radio" name="q2" value="8"></label>
+<label>9<br><input type="radio" name="q2" value="9"></label>
+<label>10<br><input type="radio" name="q2" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="   İnfaz Koruma" style="display:none;"></label>
+<label>3. Tutukluların beslenme, barınma, hayatlarını sürdürmelerine yardımcı olmak isterim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q3" value="1"></label>
+<label>2<br><input type="radio" name="q3" value="2"></label>
+<label>3<br><input type="radio" name="q3" value="3"></label>
+<label>4<br><input type="radio" name="q3" value="4"></label>
+<label>5<br><input type="radio" name="q3" value="5"></label>
+<label>6<br><input type="radio" name="q3" value="6"></label>
+<label>7<br><input type="radio" name="q3" value="7"></label>
+<label>8<br><input type="radio" name="q3" value="8"></label>
+<label>9<br><input type="radio" name="q3" value="9"></label>
+<label>10<br><input type="radio" name="q3" value="10"></label>
+</div>
+</div>
+<hr>
+<label>4. Tutuklu insanların medeni bir şekilde yaşayıp topluma kazandırılmalarına destek olabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q4" value="1"></label>
+<label>2<br><input type="radio" name="q4" value="2"></label>
+<label>3<br><input type="radio" name="q4" value="3"></label>
+<label>4<br><input type="radio" name="q4" value="4"></label>
+<label>5<br><input type="radio" name="q4" value="5"></label>
+<label>6<br><input type="radio" name="q4" value="6"></label>
+<label>7<br><input type="radio" name="q4" value="7"></label>
+<label>8<br><input type="radio" name="q4" value="8"></label>
+<label>9<br><input type="radio" name="q4" value="9"></label>
+<label>10<br><input type="radio" name="q4" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="  Zabıt Kâtipliği" style="display:none;"></label>
+<label>5. Mahkemede hâkimin söylediklerini yazıya geçirme görevini üstlenmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q5" value="1"></label>
+<label>2<br><input type="radio" name="q5" value="2"></label>
+<label>3<br><input type="radio" name="q5" value="3"></label>
+<label>4<br><input type="radio" name="q5" value="4"></label>
+<label>5<br><input type="radio" name="q5" value="5"></label>
+<label>6<br><input type="radio" name="q5" value="6"></label>
+<label>7<br><input type="radio" name="q5" value="7"></label>
+<label>8<br><input type="radio" name="q5" value="8"></label>
+<label>9<br><input type="radio" name="q5" value="9"></label>
+<label>10<br><input type="radio" name="q5" value="10"></label>
+</div>
+</div>
+<hr>
+<label>6. Belirli bir şikâyetle savcılığa gelen vatandaşlarla etkili bir iletişim kurarak onlara yardımcı olabilirim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q6" value="1"></label>
+<label>2<br><input type="radio" name="q6" value="2"></label>
+<label>3<br><input type="radio" name="q6" value="3"></label>
+<label>4<br><input type="radio" name="q6" value="4"></label>
+<label>5<br><input type="radio" name="q6" value="5"></label>
+<label>6<br><input type="radio" name="q6" value="6"></label>
+<label>7<br><input type="radio" name="q6" value="7"></label>
+<label>8<br><input type="radio" name="q6" value="8"></label>
+<label>9<br><input type="radio" name="q6" value="9"></label>
+<label>10<br><input type="radio" name="q6" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Bankacılık ve Sigortacılık" style="display:none;"></label>
+<label>7. Kamu ve özel sektördeki bankalarda çalışmak veya finans uzmanı olmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q7" value="1"></label>
+<label>2<br><input type="radio" name="q7" value="2"></label>
+<label>3<br><input type="radio" name="q7" value="3"></label>
+<label>4<br><input type="radio" name="q7" value="4"></label>
+<label>5<br><input type="radio" name="q7" value="5"></label>
+<label>6<br><input type="radio" name="q7" value="6"></label>
+<label>7<br><input type="radio" name="q7" value="7"></label>
+<label>8<br><input type="radio" name="q7" value="8"></label>
+<label>9<br><input type="radio" name="q7" value="9"></label>
+<label>10<br><input type="radio" name="q7" value="10"></label>
+</div>
+</div>
+<hr>
+<label>8. Finans kuruluşlarının ve sigorta şirketlerinin hizmet ve ürünleri için danışmanlık yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q8" value="1"></label>
+<label>2<br><input type="radio" name="q8" value="2"></label>
+<label>3<br><input type="radio" name="q8" value="3"></label>
+<label>4<br><input type="radio" name="q8" value="4"></label>
+<label>5<br><input type="radio" name="q8" value="5"></label>
+<label>6<br><input type="radio" name="q8" value="6"></label>
+<label>7<br><input type="radio" name="q8" value="7"></label>
+<label>8<br><input type="radio" name="q8" value="8"></label>
+<label>9<br><input type="radio" name="q8" value="9"></label>
+<label>10<br><input type="radio" name="q8" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Ağ İşletmenliği" style="display:none;"></label>
+<label>9. Bir kurumun bilgisayar ağını tasarlamak ve işletmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q9" value="1"></label>
+<label>2<br><input type="radio" name="q9" value="2"></label>
+<label>3<br><input type="radio" name="q9" value="3"></label>
+<label>4<br><input type="radio" name="q9" value="4"></label>
+<label>5<br><input type="radio" name="q9" value="5"></label>
+<label>6<br><input type="radio" name="q9" value="6"></label>
+<label>7<br><input type="radio" name="q9" value="7"></label>
+<label>8<br><input type="radio" name="q9" value="8"></label>
+<label>9<br><input type="radio" name="q9" value="9"></label>
+<label>10<br><input type="radio" name="q9" value="10"></label>
+</div>
+</div>
+<hr>
+<label>10. Birden çok bilgisayarın kullanıldığı işyerlerinde sistemsel koordinasyonu sağlayabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q10" value="1"></label>
+<label>2<br><input type="radio" name="q10" value="2"></label>
+<label>3<br><input type="radio" name="q10" value="3"></label>
+<label>4<br><input type="radio" name="q10" value="4"></label>
+<label>5<br><input type="radio" name="q10" value="5"></label>
+<label>6<br><input type="radio" name="q10" value="6"></label>
+<label>7<br><input type="radio" name="q10" value="7"></label>
+<label>8<br><input type="radio" name="q10" value="8"></label>
+<label>9<br><input type="radio" name="q10" value="9"></label>
+<label>10<br><input type="radio" name="q10" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Yazılım Geliştirme" style="display:none;"></label>
+<label>11. Bilgisayar programlarının yazılım ve kodlamalarını yaparak bir ürün geliştirmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q11" value="1"></label>
+<label>2<br><input type="radio" name="q11" value="2"></label>
+<label>3<br><input type="radio" name="q11" value="3"></label>
+<label>4<br><input type="radio" name="q11" value="4"></label>
+<label>5<br><input type="radio" name="q11" value="5"></label>
+<label>6<br><input type="radio" name="q11" value="6"></label>
+<label>7<br><input type="radio" name="q11" value="7"></label>
+<label>8<br><input type="radio" name="q11" value="8"></label>
+<label>9<br><input type="radio" name="q11" value="9"></label>
+<label>10<br><input type="radio" name="q11" value="10"></label>
+</div>
+</div>
+<hr>
+<label>12. Yazılıma ilişkin sistemsel ihtiyaçları anlayabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q12" value="1"></label>
+<label>2<br><input type="radio" name="q12" value="2"></label>
+<label>3<br><input type="radio" name="q12" value="3"></label>
+<label>4<br><input type="radio" name="q12" value="4"></label>
+<label>5<br><input type="radio" name="q12" value="5"></label>
+<label>6<br><input type="radio" name="q12" value="6"></label>
+<label>7<br><input type="radio" name="q12" value="7"></label>
+<label>8<br><input type="radio" name="q12" value="8"></label>
+<label>9<br><input type="radio" name="q12" value="9"></label>
+<label>10<br><input type="radio" name="q12" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Büro Yönetimi ve Yönetici Asistanlığı" style="display:none;"></label>
+<label>13. Bir iş yerinde çeşitli bilgi ve belgeleri düzenleyip muhafaza etmek isterim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q13" value="1"></label>
+<label>2<br><input type="radio" name="q13" value="2"></label>
+<label>3<br><input type="radio" name="q13" value="3"></label>
+<label>4<br><input type="radio" name="q13" value="4"></label>
+<label>5<br><input type="radio" name="q13" value="5"></label>
+<label>6<br><input type="radio" name="q13" value="6"></label>
+<label>7<br><input type="radio" name="q13" value="7"></label>
+<label>8<br><input type="radio" name="q13" value="8"></label>
+<label>9<br><input type="radio" name="q13" value="9"></label>
+<label>10<br><input type="radio" name="q13" value="10"></label>
+</div>
+</div>
+<hr>
+<label>14. İşyerindeki yönetici ile çalışanlar arasındaki iletişimi sağlamak için köprü vazifesi görebilirim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q14" value="1"></label>
+<label>2<br><input type="radio" name="q14" value="2"></label>
+<label>3<br><input type="radio" name="q14" value="3"></label>
+<label>4<br><input type="radio" name="q14" value="4"></label>
+<label>5<br><input type="radio" name="q14" value="5"></label>
+<label>6<br><input type="radio" name="q14" value="6"></label>
+<label>7<br><input type="radio" name="q14" value="7"></label>
+<label>8<br><input type="radio" name="q14" value="8"></label>
+<label>9<br><input type="radio" name="q14" value="9"></label>
+<label>10<br><input type="radio" name="q14" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Erken Çocukluk ve Özel Eğitim" style="display:none;"></label>
+<label>15. Çocukların fiziksel, zihinsel, dil ve motor gelişimlerini desteklemeyi isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q15" value="1"></label>
+<label>2<br><input type="radio" name="q15" value="2"></label>
+<label>3<br><input type="radio" name="q15" value="3"></label>
+<label>4<br><input type="radio" name="q15" value="4"></label>
+<label>5<br><input type="radio" name="q15" value="5"></label>
+<label>6<br><input type="radio" name="q15" value="6"></label>
+<label>7<br><input type="radio" name="q15" value="7"></label>
+<label>8<br><input type="radio" name="q15" value="8"></label>
+<label>9<br><input type="radio" name="q15" value="9"></label>
+<label>10<br><input type="radio" name="q15" value="10"></label>
+</div>
+</div>
+<hr>
+<label>16. Her özellikteki çocuğun (sağlıklı, hasta, göçmen, suça karışmış vs.) sağlıklı gelişimini desteklemek için çalışabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q16" value="1"></label>
+<label>2<br><input type="radio" name="q16" value="2"></label>
+<label>3<br><input type="radio" name="q16" value="3"></label>
+<label>4<br><input type="radio" name="q16" value="4"></label>
+<label>5<br><input type="radio" name="q16" value="5"></label>
+<label>6<br><input type="radio" name="q16" value="6"></label>
+<label>7<br><input type="radio" name="q16" value="7"></label>
+<label>8<br><input type="radio" name="q16" value="8"></label>
+<label>9<br><input type="radio" name="q16" value="9"></label>
+<label>10<br><input type="radio" name="q16" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek=" Dekoratif El Sanatları" style="display:none;"></label>
+<label>17. El sanatları ürünlerine ait sergi tasarımlarını planlamak ve atölyeler açmak isterim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q17" value="1"></label>
+<label>2<br><input type="radio" name="q17" value="2"></label>
+<label>3<br><input type="radio" name="q17" value="3"></label>
+<label>4<br><input type="radio" name="q17" value="4"></label>
+<label>5<br><input type="radio" name="q17" value="5"></label>
+<label>6<br><input type="radio" name="q17" value="6"></label>
+<label>7<br><input type="radio" name="q17" value="7"></label>
+<label>8<br><input type="radio" name="q17" value="8"></label>
+<label>9<br><input type="radio" name="q17" value="9"></label>
+<label>10<br><input type="radio" name="q17" value="10"></label>
+</div>
+</div>
+<hr>
+<label>18. Seramik, ahşap, cam işleme ve takı tasarımı gibi faaliyetlerde bulunabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q18" value="1"></label>
+<label>2<br><input type="radio" name="q18" value="2"></label>
+<label>3<br><input type="radio" name="q18" value="3"></label>
+<label>4<br><input type="radio" name="q18" value="4"></label>
+<label>5<br><input type="radio" name="q18" value="5"></label>
+<label>6<br><input type="radio" name="q18" value="6"></label>
+<label>7<br><input type="radio" name="q18" value="7"></label>
+<label>8<br><input type="radio" name="q18" value="8"></label>
+<label>9<br><input type="radio" name="q18" value="9"></label>
+<label>10<br><input type="radio" name="q18" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Dekoratif Ev Tekstili" style="display:none;"></label>
+<label>19. Ev tekstilinde kullanılan dikiş tekniklerini ve kumaş özelliklerini belirlemek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q19" value="1"></label>
+<label>2<br><input type="radio" name="q19" value="2"></label>
+<label>3<br><input type="radio" name="q19" value="3"></label>
+<label>4<br><input type="radio" name="q19" value="4"></label>
+<label>5<br><input type="radio" name="q19" value="5"></label>
+<label>6<br><input type="radio" name="q19" value="6"></label>
+<label>7<br><input type="radio" name="q19" value="7"></label>
+<label>8<br><input type="radio" name="q19" value="8"></label>
+<label>9<br><input type="radio" name="q19" value="9"></label>
+<label>10<br><input type="radio" name="q19" value="10"></label>
+</div>
+</div>
+<hr>
+<label>20. Dekoratif ev aksesuarları hazırlayabilirim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q20" value="1"></label>
+<label>2<br><input type="radio" name="q20" value="2"></label>
+<label>3<br><input type="radio" name="q20" value="3"></label>
+<label>4<br><input type="radio" name="q20" value="4"></label>
+<label>5<br><input type="radio" name="q20" value="5"></label>
+<label>6<br><input type="radio" name="q20" value="6"></label>
+<label>7<br><input type="radio" name="q20" value="7"></label>
+<label>8<br><input type="radio" name="q20" value="8"></label>
+<label>9<br><input type="radio" name="q20" value="9"></label>
+<label>10<br><input type="radio" name="q20" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="   Asansör Sistemleri" style="display:none;"></label>
+<label>21. Asansör, yürüyen merdiven, yürüyen yol ve vinçlerin bakım ve onarımını yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q21" value="1"></label>
+<label>2<br><input type="radio" name="q21" value="2"></label>
+<label>3<br><input type="radio" name="q21" value="3"></label>
+<label>4<br><input type="radio" name="q21" value="4"></label>
+<label>5<br><input type="radio" name="q21" value="5"></label>
+<label>6<br><input type="radio" name="q21" value="6"></label>
+<label>7<br><input type="radio" name="q21" value="7"></label>
+<label>8<br><input type="radio" name="q21" value="8"></label>
+<label>9<br><input type="radio" name="q21" value="9"></label>
+<label>10<br><input type="radio" name="q21" value="10"></label>
+</div>
+</div>
+<hr>
+<label>22. Canlı veya cansız her türlü nesneyi açık veya kapalı alanda taşıyabilen asansörlerin işlemesini sağlayabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q22" value="1"></label>
+<label>2<br><input type="radio" name="q22" value="2"></label>
+<label>3<br><input type="radio" name="q22" value="3"></label>
+<label>4<br><input type="radio" name="q22" value="4"></label>
+<label>5<br><input type="radio" name="q22" value="5"></label>
+<label>6<br><input type="radio" name="q22" value="6"></label>
+<label>7<br><input type="radio" name="q22" value="7"></label>
+<label>8<br><input type="radio" name="q22" value="8"></label>
+<label>9<br><input type="radio" name="q22" value="9"></label>
+<label>10<br><input type="radio" name="q22" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Elektrik Tesisatları ve Dağıtımı" style="display:none;"></label>
+<label>23. Enerji dağıtım firmalarında ve enerji santrallerinde çalışmak isterim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q23" value="1"></label>
+<label>2<br><input type="radio" name="q23" value="2"></label>
+<label>3<br><input type="radio" name="q23" value="3"></label>
+<label>4<br><input type="radio" name="q23" value="4"></label>
+<label>5<br><input type="radio" name="q23" value="5"></label>
+<label>6<br><input type="radio" name="q23" value="6"></label>
+<label>7<br><input type="radio" name="q23" value="7"></label>
+<label>8<br><input type="radio" name="q23" value="8"></label>
+<label>9<br><input type="radio" name="q23" value="9"></label>
+<label>10<br><input type="radio" name="q23" value="10"></label>
+</div>
+</div>
+<hr>
+<label>24. Elektrik üretiminde yer alan sistemleri denetleyip ve arızalarla ilgilenebilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q24" value="1"></label>
+<label>2<br><input type="radio" name="q24" value="2"></label>
+<label>3<br><input type="radio" name="q24" value="3"></label>
+<label>4<br><input type="radio" name="q24" value="4"></label>
+<label>5<br><input type="radio" name="q24" value="5"></label>
+<label>6<br><input type="radio" name="q24" value="6"></label>
+<label>7<br><input type="radio" name="q24" value="7"></label>
+<label>8<br><input type="radio" name="q24" value="8"></label>
+<label>9<br><input type="radio" name="q24" value="9"></label>
+<label>10<br><input type="radio" name="q24" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Elektrikli Cihazlar Teknik Servisi" style="display:none;"></label>
+<label>25. Elektrikli ev aletlerinin bakım ve tamirini yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q25" value="1"></label>
+<label>2<br><input type="radio" name="q25" value="2"></label>
+<label>3<br><input type="radio" name="q25" value="3"></label>
+<label>4<br><input type="radio" name="q25" value="4"></label>
+<label>5<br><input type="radio" name="q25" value="5"></label>
+<label>6<br><input type="radio" name="q25" value="6"></label>
+<label>7<br><input type="radio" name="q25" value="7"></label>
+<label>8<br><input type="radio" name="q25" value="8"></label>
+<label>9<br><input type="radio" name="q25" value="9"></label>
+<label>10<br><input type="radio" name="q25" value="10"></label>
+</div>
+</div>
+<hr>
+<label>26. Bir işyerinde elektronik cihazların üretimi, onarımı ve arıza tespiti alanlarında çalışabilirim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q26" value="1"></label>
+<label>2<br><input type="radio" name="q26" value="2"></label>
+<label>3<br><input type="radio" name="q26" value="3"></label>
+<label>4<br><input type="radio" name="q26" value="4"></label>
+<label>5<br><input type="radio" name="q26" value="5"></label>
+<label>6<br><input type="radio" name="q26" value="6"></label>
+<label>7<br><input type="radio" name="q26" value="7"></label>
+<label>8<br><input type="radio" name="q26" value="8"></label>
+<label>9<br><input type="radio" name="q26" value="9"></label>
+<label>10<br><input type="radio" name="q26" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Elektronik ve Haberleşme" style="display:none;"></label>
+<label>27. İletişim ve haberleşmeyi sağlayan cihaz ve donanımların gelişim sürecini takip etmek isterim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q27" value="1"></label>
+<label>2<br><input type="radio" name="q27" value="2"></label>
+<label>3<br><input type="radio" name="q27" value="3"></label>
+<label>4<br><input type="radio" name="q27" value="4"></label>
+<label>5<br><input type="radio" name="q27" value="5"></label>
+<label>6<br><input type="radio" name="q27" value="6"></label>
+<label>7<br><input type="radio" name="q27" value="7"></label>
+<label>8<br><input type="radio" name="q27" value="8"></label>
+<label>9<br><input type="radio" name="q27" value="9"></label>
+<label>10<br><input type="radio" name="q27" value="10"></label>
+</div>
+</div>
+<hr>
+<label>28. Televizyon, telefon, ses sistemi, hoparlör gibi cihazların tasarım, onarım ve bakımlarını yapabilirim.   </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q28" value="1"></label>
+<label>2<br><input type="radio" name="q28" value="2"></label>
+<label>3<br><input type="radio" name="q28" value="3"></label>
+<label>4<br><input type="radio" name="q28" value="4"></label>
+<label>5<br><input type="radio" name="q28" value="5"></label>
+<label>6<br><input type="radio" name="q28" value="6"></label>
+<label>7<br><input type="radio" name="q28" value="7"></label>
+<label>8<br><input type="radio" name="q28" value="8"></label>
+<label>9<br><input type="radio" name="q28" value="9"></label>
+<label>10<br><input type="radio" name="q28" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Endüstriyel Bakım Onarım" style="display:none;"></label>
+<label>29. Makinelerin bakım, denetim ve onarımlarını düzenli olarak yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q29" value="1"></label>
+<label>2<br><input type="radio" name="q29" value="2"></label>
+<label>3<br><input type="radio" name="q29" value="3"></label>
+<label>4<br><input type="radio" name="q29" value="4"></label>
+<label>5<br><input type="radio" name="q29" value="5"></label>
+<label>6<br><input type="radio" name="q29" value="6"></label>
+<label>7<br><input type="radio" name="q29" value="7"></label>
+<label>8<br><input type="radio" name="q29" value="8"></label>
+<label>9<br><input type="radio" name="q29" value="9"></label>
+<label>10<br><input type="radio" name="q29" value="10"></label>
+</div>
+</div>
+<hr>
+<label>30. Isıtma, havalandırma ve sıhhi tesisat sistemleri ile ilgili alanlarda çalışabilirim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q30" value="1"></label>
+<label>2<br><input type="radio" name="q30" value="2"></label>
+<label>3<br><input type="radio" name="q30" value="3"></label>
+<label>4<br><input type="radio" name="q30" value="4"></label>
+<label>5<br><input type="radio" name="q30" value="5"></label>
+<label>6<br><input type="radio" name="q30" value="6"></label>
+<label>7<br><input type="radio" name="q30" value="7"></label>
+<label>8<br><input type="radio" name="q30" value="8"></label>
+<label>9<br><input type="radio" name="q30" value="9"></label>
+<label>10<br><input type="radio" name="q30" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Gıda Teknolojisi" style="display:none;"></label>
+<label>31. Gıdaların kalite kontrollerinin yapıldığı laboratuvarlarda çalışmak isterim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q31" value="1"></label>
+<label>2<br><input type="radio" name="q31" value="2"></label>
+<label>3<br><input type="radio" name="q31" value="3"></label>
+<label>4<br><input type="radio" name="q31" value="4"></label>
+<label>5<br><input type="radio" name="q31" value="5"></label>
+<label>6<br><input type="radio" name="q31" value="6"></label>
+<label>7<br><input type="radio" name="q31" value="7"></label>
+<label>8<br><input type="radio" name="q31" value="8"></label>
+<label>9<br><input type="radio" name="q31" value="9"></label>
+<label>10<br><input type="radio" name="q31" value="10"></label>
+</div>
+</div>
+<hr>
+<label>32. Gıdaların sağlıklı şekilde ambalajlanması, korunması ve tüketime hazır hale getirilmesinde görev yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q32" value="1"></label>
+<label>2<br><input type="radio" name="q32" value="2"></label>
+<label>3<br><input type="radio" name="q32" value="3"></label>
+<label>4<br><input type="radio" name="q32" value="4"></label>
+<label>5<br><input type="radio" name="q32" value="5"></label>
+<label>6<br><input type="radio" name="q32" value="6"></label>
+<label>7<br><input type="radio" name="q32" value="7"></label>
+<label>8<br><input type="radio" name="q32" value="8"></label>
+<label>9<br><input type="radio" name="q32" value="9"></label>
+<label>10<br><input type="radio" name="q32" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek=" Grafik" style="display:none;"></label>
+<label>33. Dikkat çekici tasarımlar yapmayı ve reklam çalışmalarında kullanmayı isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q33" value="1"></label>
+<label>2<br><input type="radio" name="q33" value="2"></label>
+<label>3<br><input type="radio" name="q33" value="3"></label>
+<label>4<br><input type="radio" name="q33" value="4"></label>
+<label>5<br><input type="radio" name="q33" value="5"></label>
+<label>6<br><input type="radio" name="q33" value="6"></label>
+<label>7<br><input type="radio" name="q33" value="7"></label>
+<label>8<br><input type="radio" name="q33" value="8"></label>
+<label>9<br><input type="radio" name="q33" value="9"></label>
+<label>10<br><input type="radio" name="q33" value="10"></label>
+</div>
+</div>
+<hr>
+<label>34. Zengin bir hayal gücüyle çizimler yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q34" value="1"></label>
+<label>2<br><input type="radio" name="q34" value="2"></label>
+<label>3<br><input type="radio" name="q34" value="3"></label>
+<label>4<br><input type="radio" name="q34" value="4"></label>
+<label>5<br><input type="radio" name="q34" value="5"></label>
+<label>6<br><input type="radio" name="q34" value="6"></label>
+<label>7<br><input type="radio" name="q34" value="7"></label>
+<label>8<br><input type="radio" name="q34" value="8"></label>
+<label>9<br><input type="radio" name="q34" value="9"></label>
+<label>10<br><input type="radio" name="q34" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Güzellik Hizmetleri" style="display:none;"></label>
+<label>35. Saç ve cilt bakımı, makyaj, kozmetik ve manikür-pedikür işlemlerini yapmayı isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q35" value="1"></label>
+<label>2<br><input type="radio" name="q35" value="2"></label>
+<label>3<br><input type="radio" name="q35" value="3"></label>
+<label>4<br><input type="radio" name="q35" value="4"></label>
+<label>5<br><input type="radio" name="q35" value="5"></label>
+<label>6<br><input type="radio" name="q35" value="6"></label>
+<label>7<br><input type="radio" name="q35" value="7"></label>
+<label>8<br><input type="radio" name="q35" value="8"></label>
+<label>9<br><input type="radio" name="q35" value="9"></label>
+<label>10<br><input type="radio" name="q35" value="10"></label>
+</div>
+</div>
+<hr>
+<label>36. Estetik algısı ve el becerisi gerektiren güzellik ve bakım işlerini yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q36" value="1"></label>
+<label>2<br><input type="radio" name="q36" value="2"></label>
+<label>3<br><input type="radio" name="q36" value="3"></label>
+<label>4<br><input type="radio" name="q36" value="4"></label>
+<label>5<br><input type="radio" name="q36" value="5"></label>
+<label>6<br><input type="radio" name="q36" value="6"></label>
+<label>7<br><input type="radio" name="q36" value="7"></label>
+<label>8<br><input type="radio" name="q36" value="8"></label>
+<label>9<br><input type="radio" name="q36" value="9"></label>
+<label>10<br><input type="radio" name="q36" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Harita Kadastro" style="display:none;"></label>
+<label>37. Altyapı ve ulaşım alanlarında çalışmayı isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q37" value="1"></label>
+<label>2<br><input type="radio" name="q37" value="2"></label>
+<label>3<br><input type="radio" name="q37" value="3"></label>
+<label>4<br><input type="radio" name="q37" value="4"></label>
+<label>5<br><input type="radio" name="q37" value="5"></label>
+<label>6<br><input type="radio" name="q37" value="6"></label>
+<label>7<br><input type="radio" name="q37" value="7"></label>
+<label>8<br><input type="radio" name="q37" value="8"></label>
+<label>9<br><input type="radio" name="q37" value="9"></label>
+<label>10<br><input type="radio" name="q37" value="10"></label>
+</div>
+</div>
+<hr>
+<label>38. Harita bilgisi ile arazi ölçümleri yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q38" value="1"></label>
+<label>2<br><input type="radio" name="q38" value="2"></label>
+<label>3<br><input type="radio" name="q38" value="3"></label>
+<label>4<br><input type="radio" name="q38" value="4"></label>
+<label>5<br><input type="radio" name="q38" value="5"></label>
+<label>6<br><input type="radio" name="q38" value="6"></label>
+<label>7<br><input type="radio" name="q38" value="7"></label>
+<label>8<br><input type="radio" name="q38" value="8"></label>
+<label>9<br><input type="radio" name="q38" value="9"></label>
+<label>10<br><input type="radio" name="q38" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Hasta ve Yaşlı Bakımı" style="display:none;"></label>
+<label>39. Yaşlı bireylerin yaşam refahını ve sağlığını geliştirmeyi isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q39" value="1"></label>
+<label>2<br><input type="radio" name="q39" value="2"></label>
+<label>3<br><input type="radio" name="q39" value="3"></label>
+<label>4<br><input type="radio" name="q39" value="4"></label>
+<label>5<br><input type="radio" name="q39" value="5"></label>
+<label>6<br><input type="radio" name="q39" value="6"></label>
+<label>7<br><input type="radio" name="q39" value="7"></label>
+<label>8<br><input type="radio" name="q39" value="8"></label>
+<label>9<br><input type="radio" name="q39" value="9"></label>
+<label>10<br><input type="radio" name="q39" value="10"></label>
+</div>
+</div>
+<hr>
+<label>40. Yaşlıların rahatsızlıklarıyla ortaya çıkan gereksinimlerini karşılayabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q40" value="1"></label>
+<label>2<br><input type="radio" name="q40" value="2"></label>
+<label>3<br><input type="radio" name="q40" value="3"></label>
+<label>4<br><input type="radio" name="q40" value="4"></label>
+<label>5<br><input type="radio" name="q40" value="5"></label>
+<label>6<br><input type="radio" name="q40" value="6"></label>
+<label>7<br><input type="radio" name="q40" value="7"></label>
+<label>8<br><input type="radio" name="q40" value="8"></label>
+<label>9<br><input type="radio" name="q40" value="9"></label>
+<label>10<br><input type="radio" name="q40" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="  İnşaat Üstyapı" style="display:none;"></label>
+<label>41. İnşaat projelerini planlama, uygulama ve denetlemeyi isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q41" value="1"></label>
+<label>2<br><input type="radio" name="q41" value="2"></label>
+<label>3<br><input type="radio" name="q41" value="3"></label>
+<label>4<br><input type="radio" name="q41" value="4"></label>
+<label>5<br><input type="radio" name="q41" value="5"></label>
+<label>6<br><input type="radio" name="q41" value="6"></label>
+<label>7<br><input type="radio" name="q41" value="7"></label>
+<label>8<br><input type="radio" name="q41" value="8"></label>
+<label>9<br><input type="radio" name="q41" value="9"></label>
+<label>10<br><input type="radio" name="q41" value="10"></label>
+</div>
+</div>
+<hr>
+<label>42. İnşaat sektöründe çalışarak proje kalitesini koruyup geliştirebilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q42" value="1"></label>
+<label>2<br><input type="radio" name="q42" value="2"></label>
+<label>3<br><input type="radio" name="q42" value="3"></label>
+<label>4<br><input type="radio" name="q42" value="4"></label>
+<label>5<br><input type="radio" name="q42" value="5"></label>
+<label>6<br><input type="radio" name="q42" value="6"></label>
+<label>7<br><input type="radio" name="q42" value="7"></label>
+<label>8<br><input type="radio" name="q42" value="8"></label>
+<label>9<br><input type="radio" name="q42" value="9"></label>
+<label>10<br><input type="radio" name="q42" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Yapı Yüzey Kaplama ve Yalıtım" style="display:none;"></label>
+<label>43. Ses, su ve ısı yalıtımı işlemlerinde çalışmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q43" value="1"></label>
+<label>2<br><input type="radio" name="q43" value="2"></label>
+<label>3<br><input type="radio" name="q43" value="3"></label>
+<label>4<br><input type="radio" name="q43" value="4"></label>
+<label>5<br><input type="radio" name="q43" value="5"></label>
+<label>6<br><input type="radio" name="q43" value="6"></label>
+<label>7<br><input type="radio" name="q43" value="7"></label>
+<label>8<br><input type="radio" name="q43" value="8"></label>
+<label>9<br><input type="radio" name="q43" value="9"></label>
+<label>10<br><input type="radio" name="q43" value="10"></label>
+</div>
+</div>
+<hr>
+<label>44. Yalıtım malzemelerinin uygulanması ve tedarik edilmesini sağlayabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q44" value="1"></label>
+<label>2<br><input type="radio" name="q44" value="2"></label>
+<label>3<br><input type="radio" name="q44" value="3"></label>
+<label>4<br><input type="radio" name="q44" value="4"></label>
+<label>5<br><input type="radio" name="q44" value="5"></label>
+<label>6<br><input type="radio" name="q44" value="6"></label>
+<label>7<br><input type="radio" name="q44" value="7"></label>
+<label>8<br><input type="radio" name="q44" value="8"></label>
+<label>9<br><input type="radio" name="q44" value="9"></label>
+<label>10<br><input type="radio" name="q44" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek=" Kimya Laboratuvarı" style="display:none;"></label>
+<label>45. Kozmetik sektöründen ilaç sektörüne, ilaç sektöründen yiyecek sektörüne kadar geniş bir yelpazede çalışmayı isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q45" value="1"></label>
+<label>2<br><input type="radio" name="q45" value="2"></label>
+<label>3<br><input type="radio" name="q45" value="3"></label>
+<label>4<br><input type="radio" name="q45" value="4"></label>
+<label>5<br><input type="radio" name="q45" value="5"></label>
+<label>6<br><input type="radio" name="q45" value="6"></label>
+<label>7<br><input type="radio" name="q45" value="7"></label>
+<label>8<br><input type="radio" name="q45" value="8"></label>
+<label>9<br><input type="radio" name="q45" value="9"></label>
+<label>10<br><input type="radio" name="q45" value="10"></label>
+</div>
+</div>
+<hr>
+<label>46. Gıda, ilaç, kozmetik gibi maddelere ilişkin araştırma ve geliştirme laboratuvarlarında çalışabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q46" value="1"></label>
+<label>2<br><input type="radio" name="q46" value="2"></label>
+<label>3<br><input type="radio" name="q46" value="3"></label>
+<label>4<br><input type="radio" name="q46" value="4"></label>
+<label>5<br><input type="radio" name="q46" value="5"></label>
+<label>6<br><input type="radio" name="q46" value="6"></label>
+<label>7<br><input type="radio" name="q46" value="7"></label>
+<label>8<br><input type="radio" name="q46" value="8"></label>
+<label>9<br><input type="radio" name="q46" value="9"></label>
+<label>10<br><input type="radio" name="q46" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Konaklama Hizmetleri" style="display:none;"></label>
+<label>47. Otel, restoran, kongre merkezi gibi işletmelerde tesislerin bakım ve gelişiminde görev almak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q47" value="1"></label>
+<label>2<br><input type="radio" name="q47" value="2"></label>
+<label>3<br><input type="radio" name="q47" value="3"></label>
+<label>4<br><input type="radio" name="q47" value="4"></label>
+<label>5<br><input type="radio" name="q47" value="5"></label>
+<label>6<br><input type="radio" name="q47" value="6"></label>
+<label>7<br><input type="radio" name="q47" value="7"></label>
+<label>8<br><input type="radio" name="q47" value="8"></label>
+<label>9<br><input type="radio" name="q47" value="9"></label>
+<label>10<br><input type="radio" name="q47" value="10"></label>
+</div>
+</div>
+<hr>
+<label>48. Turizm sektöründe pazarlama, finans, müşteri ilişkileri ve yönetim konusunda çalışabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q48" value="1"></label>
+<label>2<br><input type="radio" name="q48" value="2"></label>
+<label>3<br><input type="radio" name="q48" value="3"></label>
+<label>4<br><input type="radio" name="q48" value="4"></label>
+<label>5<br><input type="radio" name="q48" value="5"></label>
+<label>6<br><input type="radio" name="q48" value="6"></label>
+<label>7<br><input type="radio" name="q48" value="7"></label>
+<label>8<br><input type="radio" name="q48" value="8"></label>
+<label>9<br><input type="radio" name="q48" value="9"></label>
+<label>10<br><input type="radio" name="q48" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek=" Bilgisayar Destekli Makine Ressamlığı" style="display:none;"></label>
+<label>49. İmalat ve inşaat alanlarında bilgisayar tabanlı çizim ve yazılım kullanarak çizim yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q49" value="1"></label>
+<label>2<br><input type="radio" name="q49" value="2"></label>
+<label>3<br><input type="radio" name="q49" value="3"></label>
+<label>4<br><input type="radio" name="q49" value="4"></label>
+<label>5<br><input type="radio" name="q49" value="5"></label>
+<label>6<br><input type="radio" name="q49" value="6"></label>
+<label>7<br><input type="radio" name="q49" value="7"></label>
+<label>8<br><input type="radio" name="q49" value="8"></label>
+<label>9<br><input type="radio" name="q49" value="9"></label>
+<label>10<br><input type="radio" name="q49" value="10"></label>
+</div>
+</div>
+<hr>
+<label>50. Şantiyelerde görev alabilir ve parçalar üzerinde teknik ölçüleri ortaya çıkarabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q50" value="1"></label>
+<label>2<br><input type="radio" name="q50" value="2"></label>
+<label>3<br><input type="radio" name="q50" value="3"></label>
+<label>4<br><input type="radio" name="q50" value="4"></label>
+<label>5<br><input type="radio" name="q50" value="5"></label>
+<label>6<br><input type="radio" name="q50" value="6"></label>
+<label>7<br><input type="radio" name="q50" value="7"></label>
+<label>8<br><input type="radio" name="q50" value="8"></label>
+<label>9<br><input type="radio" name="q50" value="9"></label>
+<label>10<br><input type="radio" name="q50" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek=" Bilgisayarlı Makine İmalatı" style="display:none;"></label>
+<label>51. Makinelerle ilgili bilgisayarlı çizim ve teknik çizim alanlarında çalışmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q51" value="1"></label>
+<label>2<br><input type="radio" name="q51" value="2"></label>
+<label>3<br><input type="radio" name="q51" value="3"></label>
+<label>4<br><input type="radio" name="q51" value="4"></label>
+<label>5<br><input type="radio" name="q51" value="5"></label>
+<label>6<br><input type="radio" name="q51" value="6"></label>
+<label>7<br><input type="radio" name="q51" value="7"></label>
+<label>8<br><input type="radio" name="q51" value="8"></label>
+<label>9<br><input type="radio" name="q51" value="9"></label>
+<label>10<br><input type="radio" name="q51" value="10"></label>
+</div>
+</div>
+<hr>
+<label>52. Bilgisayar laboratuvarında üç boyutlu düşünmeyi gerektiren teknik çizimler yapabilirim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q52" value="1"></label>
+<label>2<br><input type="radio" name="q52" value="2"></label>
+<label>3<br><input type="radio" name="q52" value="3"></label>
+<label>4<br><input type="radio" name="q52" value="4"></label>
+<label>5<br><input type="radio" name="q52" value="5"></label>
+<label>6<br><input type="radio" name="q52" value="6"></label>
+<label>7<br><input type="radio" name="q52" value="7"></label>
+<label>8<br><input type="radio" name="q52" value="8"></label>
+<label>9<br><input type="radio" name="q52" value="9"></label>
+<label>10<br><input type="radio" name="q52" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Endüstriyel Kalıp" style="display:none;"></label>
+<label>53. Hazır olan bir kalıbı montaja hazırlayıp monte etmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q53" value="1"></label>
+<label>2<br><input type="radio" name="q53" value="2"></label>
+<label>3<br><input type="radio" name="q53" value="3"></label>
+<label>4<br><input type="radio" name="q53" value="4"></label>
+<label>5<br><input type="radio" name="q53" value="5"></label>
+<label>6<br><input type="radio" name="q53" value="6"></label>
+<label>7<br><input type="radio" name="q53" value="7"></label>
+<label>8<br><input type="radio" name="q53" value="8"></label>
+<label>9<br><input type="radio" name="q53" value="9"></label>
+<label>10<br><input type="radio" name="q53" value="10"></label>
+</div>
+</div>
+<hr>
+<label>54. Tasarlanmış bir kalıbın teknik resim ve krokisini çizebilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q54" value="1"></label>
+<label>2<br><input type="radio" name="q54" value="2"></label>
+<label>3<br><input type="radio" name="q54" value="3"></label>
+<label>4<br><input type="radio" name="q54" value="4"></label>
+<label>5<br><input type="radio" name="q54" value="5"></label>
+<label>6<br><input type="radio" name="q54" value="6"></label>
+<label>7<br><input type="radio" name="q54" value="7"></label>
+<label>8<br><input type="radio" name="q54" value="8"></label>
+<label>9<br><input type="radio" name="q54" value="9"></label>
+<label>10<br><input type="radio" name="q54" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek=" Makine Bakım Onarım" style="display:none;"></label>
+<label>55. Makinelerin aksam ve özelliklerine ilişkin yenilikleri takip etmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q55" value="1"></label>
+<label>2<br><input type="radio" name="q55" value="2"></label>
+<label>3<br><input type="radio" name="q55" value="3"></label>
+<label>4<br><input type="radio" name="q55" value="4"></label>
+<label>5<br><input type="radio" name="q55" value="5"></label>
+<label>6<br><input type="radio" name="q55" value="6"></label>
+<label>7<br><input type="radio" name="q55" value="7"></label>
+<label>8<br><input type="radio" name="q55" value="8"></label>
+<label>9<br><input type="radio" name="q55" value="9"></label>
+<label>10<br><input type="radio" name="q55" value="10"></label>
+</div>
+</div>
+<hr>
+<label>56. Farklı modellerdeki makinelerin bakım ve onarımını yürütebilirim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q56" value="1"></label>
+<label>2<br><input type="radio" name="q56" value="2"></label>
+<label>3<br><input type="radio" name="q56" value="3"></label>
+<label>4<br><input type="radio" name="q56" value="4"></label>
+<label>5<br><input type="radio" name="q56" value="5"></label>
+<label>6<br><input type="radio" name="q56" value="6"></label>
+<label>7<br><input type="radio" name="q56" value="7"></label>
+<label>8<br><input type="radio" name="q56" value="8"></label>
+<label>9<br><input type="radio" name="q56" value="9"></label>
+<label>10<br><input type="radio" name="q56" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="  Ofset Baskı Sistemleri" style="display:none;"></label>
+<label>57. Baskı sürecinin doğru biçimde tamamlanması için planlama yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q57" value="1"></label>
+<label>2<br><input type="radio" name="q57" value="2"></label>
+<label>3<br><input type="radio" name="q57" value="3"></label>
+<label>4<br><input type="radio" name="q57" value="4"></label>
+<label>5<br><input type="radio" name="q57" value="5"></label>
+<label>6<br><input type="radio" name="q57" value="6"></label>
+<label>7<br><input type="radio" name="q57" value="7"></label>
+<label>8<br><input type="radio" name="q57" value="8"></label>
+<label>9<br><input type="radio" name="q57" value="9"></label>
+<label>10<br><input type="radio" name="q57" value="10"></label>
+</div>
+</div>
+<hr>
+<label>58. Baskı işlemi sonrasında baskı makinesini temizleyerek hazır hale getirebilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q58" value="1"></label>
+<label>2<br><input type="radio" name="q58" value="2"></label>
+<label>3<br><input type="radio" name="q58" value="3"></label>
+<label>4<br><input type="radio" name="q58" value="4"></label>
+<label>5<br><input type="radio" name="q58" value="5"></label>
+<label>6<br><input type="radio" name="q58" value="6"></label>
+<label>7<br><input type="radio" name="q58" value="7"></label>
+<label>8<br><input type="radio" name="q58" value="8"></label>
+<label>9<br><input type="radio" name="q58" value="9"></label>
+<label>10<br><input type="radio" name="q58" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Kaynakçılık" style="display:none;"></label>
+<label>59. Kaynak yapılacak alana çizim işlemi yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q59" value="1"></label>
+<label>2<br><input type="radio" name="q59" value="2"></label>
+<label>3<br><input type="radio" name="q59" value="3"></label>
+<label>4<br><input type="radio" name="q59" value="4"></label>
+<label>5<br><input type="radio" name="q59" value="5"></label>
+<label>6<br><input type="radio" name="q59" value="6"></label>
+<label>7<br><input type="radio" name="q59" value="7"></label>
+<label>8<br><input type="radio" name="q59" value="8"></label>
+<label>9<br><input type="radio" name="q59" value="9"></label>
+<label>10<br><input type="radio" name="q59" value="10"></label>
+</div>
+</div>
+<hr>
+<label>60. Kaynak malzemelerini seçip kaynak yöntemini belirleyebilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q60" value="1"></label>
+<label>2<br><input type="radio" name="q60" value="2"></label>
+<label>3<br><input type="radio" name="q60" value="3"></label>
+<label>4<br><input type="radio" name="q60" value="4"></label>
+<label>5<br><input type="radio" name="q60" value="5"></label>
+<label>6<br><input type="radio" name="q60" value="6"></label>
+<label>7<br><input type="radio" name="q60" value="7"></label>
+<label>8<br><input type="radio" name="q60" value="8"></label>
+<label>9<br><input type="radio" name="q60" value="9"></label>
+<label>10<br><input type="radio" name="q60" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Metal Doğrama" style="display:none;"></label>
+<label>61. Seçilen metalleri yönergeye uygun bir biçimde kesmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q61" value="1"></label>
+<label>2<br><input type="radio" name="q61" value="2"></label>
+<label>3<br><input type="radio" name="q61" value="3"></label>
+<label>4<br><input type="radio" name="q61" value="4"></label>
+<label>5<br><input type="radio" name="q61" value="5"></label>
+<label>6<br><input type="radio" name="q61" value="6"></label>
+<label>7<br><input type="radio" name="q61" value="7"></label>
+<label>8<br><input type="radio" name="q61" value="8"></label>
+<label>9<br><input type="radio" name="q61" value="9"></label>
+<label>10<br><input type="radio" name="q61" value="10"></label>
+</div>
+</div>
+<hr>
+<label>62. Metal üzerinde farklı aletler aracılığıyla şekillendirme işlemleri yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q62" value="1"></label>
+<label>2<br><input type="radio" name="q62" value="2"></label>
+<label>3<br><input type="radio" name="q62" value="3"></label>
+<label>4<br><input type="radio" name="q62" value="4"></label>
+<label>5<br><input type="radio" name="q62" value="5"></label>
+<label>6<br><input type="radio" name="q62" value="6"></label>
+<label>7<br><input type="radio" name="q62" value="7"></label>
+<label>8<br><input type="radio" name="q62" value="8"></label>
+<label>9<br><input type="radio" name="q62" value="9"></label>
+<label>10<br><input type="radio" name="q62" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Mobilya İç Mekân Ressamlığı" style="display:none;"></label>
+<label>63. Yüksek hayal gücü ve yaratıcılığımı kullanarak mekân tasarımı yapmak isterim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q63" value="1"></label>
+<label>2<br><input type="radio" name="q63" value="2"></label>
+<label>3<br><input type="radio" name="q63" value="3"></label>
+<label>4<br><input type="radio" name="q63" value="4"></label>
+<label>5<br><input type="radio" name="q63" value="5"></label>
+<label>6<br><input type="radio" name="q63" value="6"></label>
+<label>7<br><input type="radio" name="q63" value="7"></label>
+<label>8<br><input type="radio" name="q63" value="8"></label>
+<label>9<br><input type="radio" name="q63" value="9"></label>
+<label>10<br><input type="radio" name="q63" value="10"></label>
+</div>
+</div>
+<hr>
+<label>64. Sanat ve teknolojiyi bir arada kullanarak teknik çizimler yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q64" value="1"></label>
+<label>2<br><input type="radio" name="q64" value="2"></label>
+<label>3<br><input type="radio" name="q64" value="3"></label>
+<label>4<br><input type="radio" name="q64" value="4"></label>
+<label>5<br><input type="radio" name="q64" value="5"></label>
+<label>6<br><input type="radio" name="q64" value="6"></label>
+<label>7<br><input type="radio" name="q64" value="7"></label>
+<label>8<br><input type="radio" name="q64" value="8"></label>
+<label>9<br><input type="radio" name="q64" value="9"></label>
+<label>10<br><input type="radio" name="q64" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek=" Mobilya Üretim Teknolojisi" style="display:none;"></label>
+<label>65. Nitelikli mobilyalar tasarlamak, planlamak ve üretmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q65" value="1"></label>
+<label>2<br><input type="radio" name="q65" value="2"></label>
+<label>3<br><input type="radio" name="q65" value="3"></label>
+<label>4<br><input type="radio" name="q65" value="4"></label>
+<label>5<br><input type="radio" name="q65" value="5"></label>
+<label>6<br><input type="radio" name="q65" value="6"></label>
+<label>7<br><input type="radio" name="q65" value="7"></label>
+<label>8<br><input type="radio" name="q65" value="8"></label>
+<label>9<br><input type="radio" name="q65" value="9"></label>
+<label>10<br><input type="radio" name="q65" value="10"></label>
+</div>
+</div>
+<hr>
+<label>66. Mobilya üretim aşamasında yaşanabilecek sorunlara yönelik çözümler üretebilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q66" value="1"></label>
+<label>2<br><input type="radio" name="q66" value="2"></label>
+<label>3<br><input type="radio" name="q66" value="3"></label>
+<label>4<br><input type="radio" name="q66" value="4"></label>
+<label>5<br><input type="radio" name="q66" value="5"></label>
+<label>6<br><input type="radio" name="q66" value="6"></label>
+<label>7<br><input type="radio" name="q66" value="7"></label>
+<label>8<br><input type="radio" name="q66" value="8"></label>
+<label>9<br><input type="radio" name="q66" value="9"></label>
+<label>10<br><input type="radio" name="q66" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Giysi Kalıp Tasarımı ve Üretimi" style="display:none;"></label>
+<label>67. Müşteriler için kumaşın kalitesini ve renginin uygunluğunu kontrol etmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q67" value="1"></label>
+<label>2<br><input type="radio" name="q67" value="2"></label>
+<label>3<br><input type="radio" name="q67" value="3"></label>
+<label>4<br><input type="radio" name="q67" value="4"></label>
+<label>5<br><input type="radio" name="q67" value="5"></label>
+<label>6<br><input type="radio" name="q67" value="6"></label>
+<label>7<br><input type="radio" name="q67" value="7"></label>
+<label>8<br><input type="radio" name="q67" value="8"></label>
+<label>9<br><input type="radio" name="q67" value="9"></label>
+<label>10<br><input type="radio" name="q67" value="10"></label>
+</div>
+</div>
+<hr>
+<label>68. Yeni giysi kalıpları ve modelleri tasarlayabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q68" value="1"></label>
+<label>2<br><input type="radio" name="q68" value="2"></label>
+<label>3<br><input type="radio" name="q68" value="3"></label>
+<label>4<br><input type="radio" name="q68" value="4"></label>
+<label>5<br><input type="radio" name="q68" value="5"></label>
+<label>6<br><input type="radio" name="q68" value="6"></label>
+<label>7<br><input type="radio" name="q68" value="7"></label>
+<label>8<br><input type="radio" name="q68" value="8"></label>
+<label>9<br><input type="radio" name="q68" value="9"></label>
+<label>10<br><input type="radio" name="q68" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Terzi" style="display:none;"></label>
+<label>69. Modayı takip ederek bireysel taleplere yönelik tasarımlar geliştirmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q69" value="1"></label>
+<label>2<br><input type="radio" name="q69" value="2"></label>
+<label>3<br><input type="radio" name="q69" value="3"></label>
+<label>4<br><input type="radio" name="q69" value="4"></label>
+<label>5<br><input type="radio" name="q69" value="5"></label>
+<label>6<br><input type="radio" name="q69" value="6"></label>
+<label>7<br><input type="radio" name="q69" value="7"></label>
+<label>8<br><input type="radio" name="q69" value="8"></label>
+<label>9<br><input type="radio" name="q69" value="9"></label>
+<label>10<br><input type="radio" name="q69" value="10"></label>
+</div>
+</div>
+<hr>
+<label>70. Giyim materyalleri (kumaş, keten vs.) üzerinde kesme, dikme vs. işlemler yapabilirim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q70" value="1"></label>
+<label>2<br><input type="radio" name="q70" value="2"></label>
+<label>3<br><input type="radio" name="q70" value="3"></label>
+<label>4<br><input type="radio" name="q70" value="4"></label>
+<label>5<br><input type="radio" name="q70" value="5"></label>
+<label>6<br><input type="radio" name="q70" value="6"></label>
+<label>7<br><input type="radio" name="q70" value="7"></label>
+<label>8<br><input type="radio" name="q70" value="8"></label>
+<label>9<br><input type="radio" name="q70" value="9"></label>
+<label>10<br><input type="radio" name="q70" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Elektrikli Araçlar" style="display:none;"></label>
+<label>71. Elektrikli araçların tasarımında ve üretiminde görev almak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q71" value="1"></label>
+<label>2<br><input type="radio" name="q71" value="2"></label>
+<label>3<br><input type="radio" name="q71" value="3"></label>
+<label>4<br><input type="radio" name="q71" value="4"></label>
+<label>5<br><input type="radio" name="q71" value="5"></label>
+<label>6<br><input type="radio" name="q71" value="6"></label>
+<label>7<br><input type="radio" name="q71" value="7"></label>
+<label>8<br><input type="radio" name="q71" value="8"></label>
+<label>9<br><input type="radio" name="q71" value="9"></label>
+<label>10<br><input type="radio" name="q71" value="10"></label>
+</div>
+</div>
+<hr>
+<label>72. Elektrikli araçların onarım ve bakımlarını yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q72" value="1"></label>
+<label>2<br><input type="radio" name="q72" value="2"></label>
+<label>3<br><input type="radio" name="q72" value="3"></label>
+<label>4<br><input type="radio" name="q72" value="4"></label>
+<label>5<br><input type="radio" name="q72" value="5"></label>
+<label>6<br><input type="radio" name="q72" value="6"></label>
+<label>7<br><input type="radio" name="q72" value="7"></label>
+<label>8<br><input type="radio" name="q72" value="8"></label>
+<label>9<br><input type="radio" name="q72" value="9"></label>
+<label>10<br><input type="radio" name="q72" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="İş Makineleri" style="display:none;"></label>
+<label>73. Ekskavatör, kule vinç, greyder ve loder gibi iş makinelerinin operatörlüğünü yapmak isterim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q73" value="1"></label>
+<label>2<br><input type="radio" name="q73" value="2"></label>
+<label>3<br><input type="radio" name="q73" value="3"></label>
+<label>4<br><input type="radio" name="q73" value="4"></label>
+<label>5<br><input type="radio" name="q73" value="5"></label>
+<label>6<br><input type="radio" name="q73" value="6"></label>
+<label>7<br><input type="radio" name="q73" value="7"></label>
+<label>8<br><input type="radio" name="q73" value="8"></label>
+<label>9<br><input type="radio" name="q73" value="9"></label>
+<label>10<br><input type="radio" name="q73" value="10"></label>
+</div>
+</div>
+<hr>
+<label>74. İş makineleri aracılığıyla malzeme taşıma, arazi düzleştirme ve temel atma gibi işlemleri yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q74" value="1"></label>
+<label>2<br><input type="radio" name="q74" value="2"></label>
+<label>3<br><input type="radio" name="q74" value="3"></label>
+<label>4<br><input type="radio" name="q74" value="4"></label>
+<label>5<br><input type="radio" name="q74" value="5"></label>
+<label>6<br><input type="radio" name="q74" value="6"></label>
+<label>7<br><input type="radio" name="q74" value="7"></label>
+<label>8<br><input type="radio" name="q74" value="8"></label>
+<label>9<br><input type="radio" name="q74" value="9"></label>
+<label>10<br><input type="radio" name="q74" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek=" Otomotiv Boya" style="display:none;"></label>
+<label>75. Araçların yüzeyindeki hasarları ortaya çıkarıp onarmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q75" value="1"></label>
+<label>2<br><input type="radio" name="q75" value="2"></label>
+<label>3<br><input type="radio" name="q75" value="3"></label>
+<label>4<br><input type="radio" name="q75" value="4"></label>
+<label>5<br><input type="radio" name="q75" value="5"></label>
+<label>6<br><input type="radio" name="q75" value="6"></label>
+<label>7<br><input type="radio" name="q75" value="7"></label>
+<label>8<br><input type="radio" name="q75" value="8"></label>
+<label>9<br><input type="radio" name="q75" value="9"></label>
+<label>10<br><input type="radio" name="q75" value="10"></label>
+</div>
+</div>
+<hr>
+<label>76. Otomobil boyama, parlatma ve cilalama işlemlerini yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q76" value="1"></label>
+<label>2<br><input type="radio" name="q76" value="2"></label>
+<label>3<br><input type="radio" name="q76" value="3"></label>
+<label>4<br><input type="radio" name="q76" value="4"></label>
+<label>5<br><input type="radio" name="q76" value="5"></label>
+<label>6<br><input type="radio" name="q76" value="6"></label>
+<label>7<br><input type="radio" name="q76" value="7"></label>
+<label>8<br><input type="radio" name="q76" value="8"></label>
+<label>9<br><input type="radio" name="q76" value="9"></label>
+<label>10<br><input type="radio" name="q76" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Otomotiv Elektromekanik" style="display:none;"></label>
+<label>77. Otomotivlere ait parçaları düzeltmek ve tamirini yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q77" value="1"></label>
+<label>2<br><input type="radio" name="q77" value="2"></label>
+<label>3<br><input type="radio" name="q77" value="3"></label>
+<label>4<br><input type="radio" name="q77" value="4"></label>
+<label>5<br><input type="radio" name="q77" value="5"></label>
+<label>6<br><input type="radio" name="q77" value="6"></label>
+<label>7<br><input type="radio" name="q77" value="7"></label>
+<label>8<br><input type="radio" name="q77" value="8"></label>
+<label>9<br><input type="radio" name="q77" value="9"></label>
+<label>10<br><input type="radio" name="q77" value="10"></label>
+</div>
+</div>
+<hr>
+<label>78. Otomotivlerin performans ve güvenliğini arttırmak için parça değiştirme işlemi yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q78" value="1"></label>
+<label>2<br><input type="radio" name="q78" value="2"></label>
+<label>3<br><input type="radio" name="q78" value="3"></label>
+<label>4<br><input type="radio" name="q78" value="4"></label>
+<label>5<br><input type="radio" name="q78" value="5"></label>
+<label>6<br><input type="radio" name="q78" value="6"></label>
+<label>7<br><input type="radio" name="q78" value="7"></label>
+<label>8<br><input type="radio" name="q78" value="8"></label>
+<label>9<br><input type="radio" name="q78" value="9"></label>
+<label>10<br><input type="radio" name="q78" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Muhasebe" style="display:none;"></label>
+<label>79. Finansal işlemleri analiz etme, kaydetme, raporlama ve sunma gibi işlemleri yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q79" value="1"></label>
+<label>2<br><input type="radio" name="q79" value="2"></label>
+<label>3<br><input type="radio" name="q79" value="3"></label>
+<label>4<br><input type="radio" name="q79" value="4"></label>
+<label>5<br><input type="radio" name="q79" value="5"></label>
+<label>6<br><input type="radio" name="q79" value="6"></label>
+<label>7<br><input type="radio" name="q79" value="7"></label>
+<label>8<br><input type="radio" name="q79" value="8"></label>
+<label>9<br><input type="radio" name="q79" value="9"></label>
+<label>10<br><input type="radio" name="q79" value="10"></label>
+</div>
+</div>
+<hr>
+<label>80. Müşterilere yönelik vergi danışmanlığı yürüterek beyanname hazırlama ve yükümlülükleri takip etme işlemlerini yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q80" value="1"></label>
+<label>2<br><input type="radio" name="q80" value="2"></label>
+<label>3<br><input type="radio" name="q80" value="3"></label>
+<label>4<br><input type="radio" name="q80" value="4"></label>
+<label>5<br><input type="radio" name="q80" value="5"></label>
+<label>6<br><input type="radio" name="q80" value="6"></label>
+<label>7<br><input type="radio" name="q80" value="7"></label>
+<label>8<br><input type="radio" name="q80" value="8"></label>
+<label>9<br><input type="radio" name="q80" value="9"></label>
+<label>10<br><input type="radio" name="q80" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Satış Danışmanlığı" style="display:none;"></label>
+<label>81. Müşterileri ziyaret ederek onları bilgilendirmek ve olası şikâyetlerini almak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q81" value="1"></label>
+<label>2<br><input type="radio" name="q81" value="2"></label>
+<label>3<br><input type="radio" name="q81" value="3"></label>
+<label>4<br><input type="radio" name="q81" value="4"></label>
+<label>5<br><input type="radio" name="q81" value="5"></label>
+<label>6<br><input type="radio" name="q81" value="6"></label>
+<label>7<br><input type="radio" name="q81" value="7"></label>
+<label>8<br><input type="radio" name="q81" value="8"></label>
+<label>9<br><input type="radio" name="q81" value="9"></label>
+<label>10<br><input type="radio" name="q81" value="10"></label>
+</div>
+</div>
+<hr>
+<label>82. Satış yapılacak ürünü müşteriye en uygun şekilde sunmak için konuşmama ve diksiyonuma dikkat edebilirim. </label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q82" value="1"></label>
+<label>2<br><input type="radio" name="q82" value="2"></label>
+<label>3<br><input type="radio" name="q82" value="3"></label>
+<label>4<br><input type="radio" name="q82" value="4"></label>
+<label>5<br><input type="radio" name="q82" value="5"></label>
+<label>6<br><input type="radio" name="q82" value="6"></label>
+<label>7<br><input type="radio" name="q82" value="7"></label>
+<label>8<br><input type="radio" name="q82" value="8"></label>
+<label>9<br><input type="radio" name="q82" value="9"></label>
+<label>10<br><input type="radio" name="q82" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Sigortacılık" style="display:none;"></label>
+<label>83. Kaza, sağlık, afet gibi sigortalar yaptıran birey ya da kurumların sürecini takip etmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q83" value="1"></label>
+<label>2<br><input type="radio" name="q83" value="2"></label>
+<label>3<br><input type="radio" name="q83" value="3"></label>
+<label>4<br><input type="radio" name="q83" value="4"></label>
+<label>5<br><input type="radio" name="q83" value="5"></label>
+<label>6<br><input type="radio" name="q83" value="6"></label>
+<label>7<br><input type="radio" name="q83" value="7"></label>
+<label>8<br><input type="radio" name="q83" value="8"></label>
+<label>9<br><input type="radio" name="q83" value="9"></label>
+<label>10<br><input type="radio" name="q83" value="10"></label>
+</div>
+</div>
+<hr>
+<label>84. Kanunlara uygun şekilde sigorta ödemelerini denetleyebilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q84" value="1"></label>
+<label>2<br><input type="radio" name="q84" value="2"></label>
+<label>3<br><input type="radio" name="q84" value="3"></label>
+<label>4<br><input type="radio" name="q84" value="4"></label>
+<label>5<br><input type="radio" name="q84" value="5"></label>
+<label>6<br><input type="radio" name="q84" value="6"></label>
+<label>7<br><input type="radio" name="q84" value="7"></label>
+<label>8<br><input type="radio" name="q84" value="8"></label>
+<label>9<br><input type="radio" name="q84" value="9"></label>
+<label>10<br><input type="radio" name="q84" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Plastik Sanatlar" style="display:none;"></label>
+<label>85. Heykel, fotoğrafçılık, grafik tasarım, resim gibi sanat dallarında yeteneklerimi ortaya koymayı isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q85" value="1"></label>
+<label>2<br><input type="radio" name="q85" value="2"></label>
+<label>3<br><input type="radio" name="q85" value="3"></label>
+<label>4<br><input type="radio" name="q85" value="4"></label>
+<label>5<br><input type="radio" name="q85" value="5"></label>
+<label>6<br><input type="radio" name="q85" value="6"></label>
+<label>7<br><input type="radio" name="q85" value="7"></label>
+<label>8<br><input type="radio" name="q85" value="8"></label>
+<label>9<br><input type="radio" name="q85" value="9"></label>
+<label>10<br><input type="radio" name="q85" value="10"></label>
+</div>
+</div>
+<hr>
+<label>86. Kendi sanatsal tarzımı oluşturabilir, geliştirebilir ve sergileyebilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q86" value="1"></label>
+<label>2<br><input type="radio" name="q86" value="2"></label>
+<label>3<br><input type="radio" name="q86" value="3"></label>
+<label>4<br><input type="radio" name="q86" value="4"></label>
+<label>5<br><input type="radio" name="q86" value="5"></label>
+<label>6<br><input type="radio" name="q86" value="6"></label>
+<label>7<br><input type="radio" name="q86" value="7"></label>
+<label>8<br><input type="radio" name="q86" value="8"></label>
+<label>9<br><input type="radio" name="q86" value="9"></label>
+<label>10<br><input type="radio" name="q86" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Radyo-Televizyon" style="display:none;"></label>
+<label>87. Radyo ve televizyon yayın akışını düzenleme ve planlama gibi işlemleri yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q87" value="1"></label>
+<label>2<br><input type="radio" name="q87" value="2"></label>
+<label>3<br><input type="radio" name="q87" value="3"></label>
+<label>4<br><input type="radio" name="q87" value="4"></label>
+<label>5<br><input type="radio" name="q87" value="5"></label>
+<label>6<br><input type="radio" name="q87" value="6"></label>
+<label>7<br><input type="radio" name="q87" value="7"></label>
+<label>8<br><input type="radio" name="q87" value="8"></label>
+<label>9<br><input type="radio" name="q87" value="9"></label>
+<label>10<br><input type="radio" name="q87" value="10"></label>
+</div>
+</div>
+<hr>
+<label>88. Ekran arkasında olacak şekilde ışık ve ses alanlarında çalışabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q88" value="1"></label>
+<label>2<br><input type="radio" name="q88" value="2"></label>
+<label>3<br><input type="radio" name="q88" value="3"></label>
+<label>4<br><input type="radio" name="q88" value="4"></label>
+<label>5<br><input type="radio" name="q88" value="5"></label>
+<label>6<br><input type="radio" name="q88" value="6"></label>
+<label>7<br><input type="radio" name="q88" value="7"></label>
+<label>8<br><input type="radio" name="q88" value="8"></label>
+<label>9<br><input type="radio" name="q88" value="9"></label>
+<label>10<br><input type="radio" name="q88" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Ebe Yardımcılığı" style="display:none;"></label>
+<label>89. Hamilelik sürecindeki hastaların sağlıklı bir gebelik dönemi geçirmelerine destek vermek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q89" value="1"></label>
+<label>2<br><input type="radio" name="q89" value="2"></label>
+<label>3<br><input type="radio" name="q89" value="3"></label>
+<label>4<br><input type="radio" name="q89" value="4"></label>
+<label>5<br><input type="radio" name="q89" value="5"></label>
+<label>6<br><input type="radio" name="q89" value="6"></label>
+<label>7<br><input type="radio" name="q89" value="7"></label>
+<label>8<br><input type="radio" name="q89" value="8"></label>
+<label>9<br><input type="radio" name="q89" value="9"></label>
+<label>10<br><input type="radio" name="q89" value="10"></label>
+</div>
+</div>
+<hr>
+<label>90. Anne sağlığı ve bebeğin sağlıklı gelişimi için yardımsever, içten ve soğukkanlı olabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q90" value="1"></label>
+<label>2<br><input type="radio" name="q90" value="2"></label>
+<label>3<br><input type="radio" name="q90" value="3"></label>
+<label>4<br><input type="radio" name="q90" value="4"></label>
+<label>5<br><input type="radio" name="q90" value="5"></label>
+<label>6<br><input type="radio" name="q90" value="6"></label>
+<label>7<br><input type="radio" name="q90" value="7"></label>
+<label>8<br><input type="radio" name="q90" value="8"></label>
+<label>9<br><input type="radio" name="q90" value="9"></label>
+<label>10<br><input type="radio" name="q90" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Hemşire Yardımcılığı" style="display:none;"></label>
+<label>91. Tedavi gören hastaların ilaçlarını hemşirenin onayıyla hastaya vermek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q91" value="1"></label>
+<label>2<br><input type="radio" name="q91" value="2"></label>
+<label>3<br><input type="radio" name="q91" value="3"></label>
+<label>4<br><input type="radio" name="q91" value="4"></label>
+<label>5<br><input type="radio" name="q91" value="5"></label>
+<label>6<br><input type="radio" name="q91" value="6"></label>
+<label>7<br><input type="radio" name="q91" value="7"></label>
+<label>8<br><input type="radio" name="q91" value="8"></label>
+<label>9<br><input type="radio" name="q91" value="9"></label>
+<label>10<br><input type="radio" name="q91" value="10"></label>
+</div>
+</div>
+<hr>
+<label>92. Hastanın kişisel temizliğini yapabilir, güvenliğini sağlayabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q92" value="1"></label>
+<label>2<br><input type="radio" name="q92" value="2"></label>
+<label>3<br><input type="radio" name="q92" value="3"></label>
+<label>4<br><input type="radio" name="q92" value="4"></label>
+<label>5<br><input type="radio" name="q92" value="5"></label>
+<label>6<br><input type="radio" name="q92" value="6"></label>
+<label>7<br><input type="radio" name="q92" value="7"></label>
+<label>8<br><input type="radio" name="q92" value="8"></label>
+<label>9<br><input type="radio" name="q92" value="9"></label>
+<label>10<br><input type="radio" name="q92" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Sağlık Bakım Teknisyenliği" style="display:none;"></label>
+<label>93. Muayene olmaları, tedavi edilmeleri ve tetkik vermeleri için hastalara yardımcı olmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q93" value="1"></label>
+<label>2<br><input type="radio" name="q93" value="2"></label>
+<label>3<br><input type="radio" name="q93" value="3"></label>
+<label>4<br><input type="radio" name="q93" value="4"></label>
+<label>5<br><input type="radio" name="q93" value="5"></label>
+<label>6<br><input type="radio" name="q93" value="6"></label>
+<label>7<br><input type="radio" name="q93" value="7"></label>
+<label>8<br><input type="radio" name="q93" value="8"></label>
+<label>9<br><input type="radio" name="q93" value="9"></label>
+<label>10<br><input type="radio" name="q93" value="10"></label>
+</div>
+</div>
+<hr>
+<label>94. Hastaların hareket etmesine, yürümesine ve beslenmesine yardımcı olabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q94" value="1"></label>
+<label>2<br><input type="radio" name="q94" value="2"></label>
+<label>3<br><input type="radio" name="q94" value="3"></label>
+<label>4<br><input type="radio" name="q94" value="4"></label>
+<label>5<br><input type="radio" name="q94" value="5"></label>
+<label>6<br><input type="radio" name="q94" value="6"></label>
+<label>7<br><input type="radio" name="q94" value="7"></label>
+<label>8<br><input type="radio" name="q94" value="8"></label>
+<label>9<br><input type="radio" name="q94" value="9"></label>
+<label>10<br><input type="radio" name="q94" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Tarım" style="display:none;"></label>
+<label>95. Sağlıklı tohum, ürün ve tarım alanı oluşturmaya çalışmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q95" value="1"></label>
+<label>2<br><input type="radio" name="q95" value="2"></label>
+<label>3<br><input type="radio" name="q95" value="3"></label>
+<label>4<br><input type="radio" name="q95" value="4"></label>
+<label>5<br><input type="radio" name="q95" value="5"></label>
+<label>6<br><input type="radio" name="q95" value="6"></label>
+<label>7<br><input type="radio" name="q95" value="7"></label>
+<label>8<br><input type="radio" name="q95" value="8"></label>
+<label>9<br><input type="radio" name="q95" value="9"></label>
+<label>10<br><input type="radio" name="q95" value="10"></label>
+</div>
+</div>
+<hr>
+<label>96. Tarım ürünlerinin verimliliğini arttırmak için araştırma geliştirme çalışmaları yürütebilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q96" value="1"></label>
+<label>2<br><input type="radio" name="q96" value="2"></label>
+<label>3<br><input type="radio" name="q96" value="3"></label>
+<label>4<br><input type="radio" name="q96" value="4"></label>
+<label>5<br><input type="radio" name="q96" value="5"></label>
+<label>6<br><input type="radio" name="q96" value="6"></label>
+<label>7<br><input type="radio" name="q96" value="7"></label>
+<label>8<br><input type="radio" name="q96" value="8"></label>
+<label>9<br><input type="radio" name="q96" value="9"></label>
+<label>10<br><input type="radio" name="q96" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek=" Tesisat Teknolojisi ve İklimlendirme" style="display:none;"></label>
+<label>97. Yapıların havalandırma, soğutma ve ısıtma işlemlerini yapmak isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q97" value="1"></label>
+<label>2<br><input type="radio" name="q97" value="2"></label>
+<label>3<br><input type="radio" name="q97" value="3"></label>
+<label>4<br><input type="radio" name="q97" value="4"></label>
+<label>5<br><input type="radio" name="q97" value="5"></label>
+<label>6<br><input type="radio" name="q97" value="6"></label>
+<label>7<br><input type="radio" name="q97" value="7"></label>
+<label>8<br><input type="radio" name="q97" value="8"></label>
+<label>9<br><input type="radio" name="q97" value="9"></label>
+<label>10<br><input type="radio" name="q97" value="10"></label>
+</div>
+</div>
+<hr>
+<label>98. Sıhhi tesisat ve doğalgaz tesisatının bakım, onarım ve kontrolünü yapabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q98" value="1"></label>
+<label>2<br><input type="radio" name="q98" value="2"></label>
+<label>3<br><input type="radio" name="q98" value="3"></label>
+<label>4<br><input type="radio" name="q98" value="4"></label>
+<label>5<br><input type="radio" name="q98" value="5"></label>
+<label>6<br><input type="radio" name="q98" value="6"></label>
+<label>7<br><input type="radio" name="q98" value="7"></label>
+<label>8<br><input type="radio" name="q98" value="8"></label>
+<label>9<br><input type="radio" name="q98" value="9"></label>
+<label>10<br><input type="radio" name="q98" value="10"></label>
+</div>
+</div>
+<hr>
+<label data-meslek="Yiyecek İçecek Hizmetleri" style="display:none;"></label>
+<label>99. Otel, kafe ve restoranlarda yiyecek ve içecekler hazırlamak ve servis etmek isterim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q99" value="1"></label>
+<label>2<br><input type="radio" name="q99" value="2"></label>
+<label>3<br><input type="radio" name="q99" value="3"></label>
+<label>4<br><input type="radio" name="q99" value="4"></label>
+<label>5<br><input type="radio" name="q99" value="5"></label>
+<label>6<br><input type="radio" name="q99" value="6"></label>
+<label>7<br><input type="radio" name="q99" value="7"></label>
+<label>8<br><input type="radio" name="q99" value="8"></label>
+<label>9<br><input type="radio" name="q99" value="9"></label>
+<label>10<br><input type="radio" name="q99" value="10"></label>
+</div>
+</div>
+<hr>
+<label>100. Yiyecek içecek sektöründe gıda denetiminde bulunabilir ve genel pazarlama alanlarında çalışabilirim.</label>
+<div class="radio-buttons">
+<div class="radio-group">
+<label>1<br><input type="radio" name="q100" value="1"></label>
+<label>2<br><input type="radio" name="q100" value="2"></label>
+<label>3<br><input type="radio" name="q100" value="3"></label>
+<label>4<br><input type="radio" name="q100" value="4"></label>
+<label>5<br><input type="radio" name="q100" value="5"></label>
+<label>6<br><input type="radio" name="q100" value="6"></label>
+<label>7<br><input type="radio" name="q100" value="7"></label>
+<label>8<br><input type="radio" name="q100" value="8"></label>
+<label>9<br><input type="radio" name="q100" value="9"></label>
+<label>10<br><input type="radio" name="q100" value="10"></label>
+</div>
+</div>
+<hr>
+
+    <button type="button" onclick="submitForm()">Tamamla</button>
+</form>
+
+<div id="resultModal" class="modal">
+    <div class="modal-content">
+        <h2>Sizin İçin Uygun Meslekler</h2>
+        <table id="resultTable" border="1" style="width:100%; text-align:center; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Meslek Dalı</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <button class="close-btn" onclick="closeModal()">Kapat</button>
+    </div>
+</div>
+
+<script>
+function submitForm() {
+    const form = document.getElementById('questionnaire');
+    let unansweredQuestions = [];
+    let toplamPuanlar = [];
+    let meslekIndexi = -1;
+    let soruIndexi = 1;
+
+    form.querySelectorAll('label[data-meslek]').forEach((label, idx) => {
+        meslekIndexi++;
+        toplamPuanlar[meslekIndexi] = 0;
+    });
+
+    form.querySelectorAll('label').forEach((label) => {
+        if (!label.dataset.meslek && soruIndexi <= 100) {
+            const secilen = form.querySelector(`input[name="q${soruIndexi}"]:checked`);
+            if (!secilen) {
+                unansweredQuestions.push(soruIndexi);
+            } else {
+                const puan = parseInt(secilen.value);
+                toplamPuanlar[Math.floor((soruIndexi - 1) / 2)] += puan;
+            }
+            soruIndexi++;
+        }
+    });
+
+    if (unansweredQuestions.length > 0) {
+        const message = unansweredQuestions.map(q => q + ". soruyu").join(", ");
+        alert(message + " boş bıraktınız. Lütfen tamamlayın.");
+        return;
+    }
+
+    let resultTable = document.getElementById('resultTable').getElementsByTagName('tbody')[0];
+    resultTable.innerHTML = '';
+
+    form.querySelectorAll('label[data-meslek]').forEach((label, idx) => {
+        if (toplamPuanlar[idx] >= 16) {
+            let row = resultTable.insertRow();
+            row.insertCell(0).innerHTML = label.dataset.meslek;
+        }
+    });
+
+    document.getElementById('resultModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('resultModal').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
