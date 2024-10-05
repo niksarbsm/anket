@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOPIS Mesleki Kişilik ve Zekâ Türü Testi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .form-container {
+            background-color: #f9f0f0;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .form-container.fade {
+            opacity: 0.1;
+            pointer-events: none; 
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .question-container {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .radio-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        label {
+            margin-right: 10px;
+            font-size: 1.1em;
+            flex: 1;
+            text-align: center;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #999;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        input[type="radio"]:checked {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        input[type="radio"]:hover {
+            border-color: #4CAF50;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.1em;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .result-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .result-container th, .result-container td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .result-container th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .result-container td {
+            text-align: center;
+        }
+
+        .btn-close {
+            background-color: #ff5c5c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .btn-close:hover {
+            background-color: #ff3333;
+        }
+
+        @media (max-width: 600px) {
+            .radio-container {
+                display: block;
+            }
+
+            label {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            h1, h2, h3 {
+                font-size: 1.5em;
+            }
+        }
+
+        .image-center {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+    </style>
+    <script>
+        function sonuclariHesapla() {
+            document.getElementById("sonuc").innerHTML = ""; 
+            let puanlar = {
+                meslekiKisilik: {
+            "Araştırıcı": 0,
+            "Geleneksel": 0,
+            "Gerçekçi": 0,
+            "Girişimci": 0,
+            "Sanatçı": 0,
+            "Sosyal": 0
+        },
+        zeka: {
+            "Doğacı": 0,
+            "Görsel": 0,
+            "İçsel": 0,
+            "Mantıksal": 0,
+            "Kinestetik": 0,
+            "Kişisel": 0,
+            "Müziksel": 0,
+            "Sözel": 0,
+            "Varoluşçu": 0
+                }
+            };
+
+            let toplamSorular = 60;
+            let cevaplanmayanSorular = [];
+
+            let arastiriciSorular = [15, 30, 40, 51];
+            let gelenekselSorular = [6, 9, 22, 58];
+            let gercekciSorular = [2, 8, 26, 45];
+            let girisimciSorular = [19, 20, 42, 47];
+            let sanatciSorular = [5, 10, 11, 31];
+            let sosyalSorular = [1, 34, 41, 55];
+
+            let dogaciSorular = [21, 27, 38, 59];
+            let gorselSorular = [4, 24, 28, 46];
+            let icSelSorular = [3, 16, 17, 32];
+            let mantiksalSorular = [23, 39, 44, 57];
+            let kinestetikSorular = [13, 18, 37, 49];
+            let kisiselSorular = [7, 36, 43, 48];
+            let muzikselSorular = [12, 29, 53, 60];
+            let sozelSorular = [35, 50, 52, 54];
+            let varoluscuSorular = [14, 25, 33, 56];
+
+            for (let i = 1; i <= toplamSorular; i++) {
+                let cevap = document.querySelector(`input[name="q${i}"]:checked`);
+                if (cevap) {
+                     if (arastiriciSorular.includes(i)) puanlar.meslekiKisilik["Araştırıcı"] += parseInt(cevap.value);
+                     if (gelenekselSorular.includes(i)) puanlar.meslekiKisilik["Geleneksel"] += parseInt(cevap.value);
+                     if (gercekciSorular.includes(i)) puanlar.meslekiKisilik["Gerçekçi"] += parseInt(cevap.value);
+                     if (girisimciSorular.includes(i)) puanlar.meslekiKisilik["Girişimci"] += parseInt(cevap.value);
+                     if (sanatciSorular.includes(i)) puanlar.meslekiKisilik["Sanatçı"] += parseInt(cevap.value);
+                     if (sosyalSorular.includes(i)) puanlar.meslekiKisilik["Sosyal"] += parseInt(cevap.value);
+
+                     if (dogaciSorular.includes(i)) puanlar.zeka["Doğacı"] += parseInt(cevap.value);
+                     if (gorselSorular.includes(i)) puanlar.zeka["Görsel"] += parseInt(cevap.value);
+                     if (icSelSorular.includes(i)) puanlar.zeka["İçsel"] += parseInt(cevap.value);
+                     if (mantiksalSorular.includes(i)) puanlar.zeka["Mantıksal"] += parseInt(cevap.value);
+                     if (kinestetikSorular.includes(i)) puanlar.zeka["Kinestetik"] += parseInt(cevap.value);
+                     if (kisiselSorular.includes(i)) puanlar.zeka["Kişisel"] += parseInt(cevap.value);
+                     if (muzikselSorular.includes(i)) puanlar.zeka["Müziksel"] += parseInt(cevap.value);
+                     if (sozelSorular.includes(i)) puanlar.zeka["Sözel"] += parseInt(cevap.value);
+                     if (varoluscuSorular.includes(i)) puanlar.zeka["Varoluşçu"] += parseInt(cevap.value);
+                } else {
+                    cevaplanmayanSorular.push(i);
+                }
+            }
+
+            if (cevaplanmayanSorular.length > 0) {
+                document.getElementById("sonuc").innerHTML = `${cevaplanmayanSorular.join(', ')} numaralı soruları cevaplayınız.`;
+            } else {
+                // En yüksek mesleki kiş.
+                let enYuksekMeslekiKisilikPuan = Math.max(...Object.values(puanlar.meslekiKisilik));
+                let enYuksekMeslekiKisilikler = Object.keys(puanlar.meslekiKisilik).filter(k => puanlar.meslekiKisilik[k] === enYuksekMeslekiKisilikPuan);
+
+                // En yüksek zeka tür.
+                let enYuksekZekaPuan = Math.max(...Object.values(puanlar.zeka));
+                let enYuksekZekalar = Object.keys(puanlar.zeka).filter(k => puanlar.zeka[k] === enYuksekZekaPuan);
+
+                document.getElementById("resultMeslekiKisilik").innerText = enYuksekMeslekiKisilikler.join(', ');
+                document.getElementById("resultZeka").innerText = enYuksekZekalar.join(', ');
+                document.querySelector('.result-container').style.display = 'block';
+
+                document.querySelector('.form-container').classList.add('fade');
+            }
+        }
+
+        function sonuclariKapat() {
+            document.querySelector('.result-container').style.display = 'none';
+            document.querySelector('.form-container').classList.remove('fade');
+        }
+    </script>
+</head>
+<body>
+
+    <a href="https://resimlink.com/pFuDaRfT" title="bilsemlogo">
+        <img src="https://r.resimlink.com/pFuDaRfT.png" title="bilsemlogo" alt="bilsemlogo" width="90">
+    </a>
+
+    <div class="form-container">
+        <h1>NOPIS</h1>
+        <h2><i>(Niksar Occupational Personality &amp; Intelligence Scale)</i></h2>
+        <h3>Niksar Mesleki Kişilik ve Zekâ Türü Testi</h3>
+
+
+        <b style="font-size:70%;">Hiç Katılmıyorum (1) >>>> Tamamen Katılıyorum (10)</b>
+
+        <form>
+            <div class="question-container">
+                <p>1. Arkadaşlarımın sorunlarını dinlerim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q1" value="1"> 1</label>
+                    <label><input type="radio" name="q1" value="2"> 2</label>
+                    <label><input type="radio" name="q1" value="3"> 3</label>
+                    <label><input type="radio" name="q1" value="4"> 4</label>
+                    <label><input type="radio" name="q1" value="5"> 5</label>
+                    <label><input type="radio" name="q1" value="6"> 6</label>
+                    <label><input type="radio" name="q1" value="7"> 7</label>
+                    <label><input type="radio" name="q1" value="8"> 8</label>
+                    <label><input type="radio" name="q1" value="9"> 9</label>
+                    <label><input type="radio" name="q1" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>2. Bir bahçede bulunan çiçeklerin günlük bakımını üstlenmek isterim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q2" value="1"> 1</label>
+                    <label><input type="radio" name="q2" value="2"> 2</label>
+                    <label><input type="radio" name="q2" value="3"> 3</label>
+                    <label><input type="radio" name="q2" value="4"> 4</label>
+                    <label><input type="radio" name="q2" value="5"> 5</label>
+                    <label><input type="radio" name="q2" value="6"> 6</label>
+                    <label><input type="radio" name="q2" value="7"> 7</label>
+                    <label><input type="radio" name="q2" value="8"> 8</label>
+                    <label><input type="radio" name="q2" value="9"> 9</label>
+                    <label><input type="radio" name="q2" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>3. Bir konuyu en iyi şekilde nasıl öğreneceğimi bilirim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q3" value="1"> 1</label>
+                    <label><input type="radio" name="q3" value="2"> 2</label>
+                    <label><input type="radio" name="q3" value="3"> 3</label>
+                    <label><input type="radio" name="q3" value="4"> 4</label>
+                    <label><input type="radio" name="q3" value="5"> 5</label>
+                    <label><input type="radio" name="q3" value="6"> 6</label>
+                    <label><input type="radio" name="q3" value="7"> 7</label>
+                    <label><input type="radio" name="q3" value="8"> 8</label>
+                    <label><input type="radio" name="q3" value="9"> 9</label>
+                    <label><input type="radio" name="q3" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>4. Bir ödev için tablo grafik ve görseller kullanmaktan hoşlanırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q4" value="1"> 1</label>
+                    <label><input type="radio" name="q4" value="2"> 2</label>
+                    <label><input type="radio" name="q4" value="3"> 3</label>
+                    <label><input type="radio" name="q4" value="4"> 4</label>
+                    <label><input type="radio" name="q4" value="5"> 5</label>
+                    <label><input type="radio" name="q4" value="6"> 6</label>
+                    <label><input type="radio" name="q4" value="7"> 7</label>
+                    <label><input type="radio" name="q4" value="8"> 8</label>
+                    <label><input type="radio" name="q4" value="9"> 9</label>
+                    <label><input type="radio" name="q4" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>5. Bir sinema filmi veya tiyatro oyununda sahne almak isterim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q5" value="1"> 1</label>
+                    <label><input type="radio" name="q5" value="2"> 2</label>
+                    <label><input type="radio" name="q5" value="3"> 3</label>
+                    <label><input type="radio" name="q5" value="4"> 4</label>
+                    <label><input type="radio" name="q5" value="5"> 5</label>
+                    <label><input type="radio" name="q5" value="6"> 6</label>
+                    <label><input type="radio" name="q5" value="7"> 7</label>
+                    <label><input type="radio" name="q5" value="8"> 8</label>
+                    <label><input type="radio" name="q5" value="9"> 9</label>
+                    <label><input type="radio" name="q5" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>6. Bir ticari işletmenin gelir-gider tablosunu hazırlamak isterim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q6" value="1"> 1</label>
+                    <label><input type="radio" name="q6" value="2"> 2</label>
+                    <label><input type="radio" name="q6" value="3"> 3</label>
+                    <label><input type="radio" name="q6" value="4"> 4</label>
+                    <label><input type="radio" name="q6" value="5"> 5</label>
+                    <label><input type="radio" name="q6" value="6"> 6</label>
+                    <label><input type="radio" name="q6" value="7"> 7</label>
+                    <label><input type="radio" name="q6" value="8"> 8</label>
+                    <label><input type="radio" name="q6" value="9"> 9</label>
+                    <label><input type="radio" name="q6" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>7. Bireysel çalışmak yerine grupla çalışmayı tercih ederim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q7" value="1"> 1</label>
+                    <label><input type="radio" name="q7" value="2"> 2</label>
+                    <label><input type="radio" name="q7" value="3"> 3</label>
+                    <label><input type="radio" name="q7" value="4"> 4</label>
+                    <label><input type="radio" name="q7" value="5"> 5</label>
+                    <label><input type="radio" name="q7" value="6"> 6</label>
+                    <label><input type="radio" name="q7" value="7"> 7</label>
+                    <label><input type="radio" name="q7" value="8"> 8</label>
+                    <label><input type="radio" name="q7" value="9"> 9</label>
+                    <label><input type="radio" name="q7" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>8. Bozulan ev eşyalarını tamir etmeye çalışırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q8" value="1"> 1</label>
+                    <label><input type="radio" name="q8" value="2"> 2</label>
+                    <label><input type="radio" name="q8" value="3"> 3</label>
+                    <label><input type="radio" name="q8" value="4"> 4</label>
+                    <label><input type="radio" name="q8" value="5"> 5</label>
+                    <label><input type="radio" name="q8" value="6"> 6</label>
+                    <label><input type="radio" name="q8" value="7"> 7</label>
+                    <label><input type="radio" name="q8" value="8"> 8</label>
+                    <label><input type="radio" name="q8" value="9"> 9</label>
+                    <label><input type="radio" name="q8" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>9. Çalıştığım dersi ünitelere ayırıp plan yaparım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q9" value="1"> 1</label>
+                    <label><input type="radio" name="q9" value="2"> 2</label>
+                    <label><input type="radio" name="q9" value="3"> 3</label>
+                    <label><input type="radio" name="q9" value="4"> 4</label>
+                    <label><input type="radio" name="q9" value="5"> 5</label>
+                    <label><input type="radio" name="q9" value="6"> 6</label>
+                    <label><input type="radio" name="q9" value="7"> 7</label>
+                    <label><input type="radio" name="q9" value="8"> 8</label>
+                    <label><input type="radio" name="q9" value="9"> 9</label>
+                    <label><input type="radio" name="q9" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>10. Çeşitli enstrümanlar çalmak hoşuma gider.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q10" value="1"> 1</label>
+                    <label><input type="radio" name="q10" value="2"> 2</label>
+                    <label><input type="radio" name="q10" value="3"> 3</label>
+                    <label><input type="radio" name="q10" value="4"> 4</label>
+                    <label><input type="radio" name="q10" value="5"> 5</label>
+                    <label><input type="radio" name="q10" value="6"> 6</label>
+                    <label><input type="radio" name="q10" value="7"> 7</label>
+                    <label><input type="radio" name="q10" value="8"> 8</label>
+                    <label><input type="radio" name="q10" value="9"> 9</label>
+                    <label><input type="radio" name="q10" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>11. Çevremde ilgimi çeken manzara ve nesneleri tuvale çizmek isterim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q11" value="1"> 1</label>
+                    <label><input type="radio" name="q11" value="2"> 2</label>
+                    <label><input type="radio" name="q11" value="3"> 3</label>
+                    <label><input type="radio" name="q11" value="4"> 4</label>
+                    <label><input type="radio" name="q11" value="5"> 5</label>
+                    <label><input type="radio" name="q11" value="6"> 6</label>
+                    <label><input type="radio" name="q11" value="7"> 7</label>
+                    <label><input type="radio" name="q11" value="8"> 8</label>
+                    <label><input type="radio" name="q11" value="9"> 9</label>
+                    <label><input type="radio" name="q11" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>12. Müzik ritimlerini algılama konusunda becerikliyim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q12" value="1"> 1</label>
+                    <label><input type="radio" name="q12" value="2"> 2</label>
+                    <label><input type="radio" name="q12" value="3"> 3</label>
+                    <label><input type="radio" name="q12" value="4"> 4</label>
+                    <label><input type="radio" name="q12" value="5"> 5</label>
+                    <label><input type="radio" name="q12" value="6"> 6</label>
+                    <label><input type="radio" name="q12" value="7"> 7</label>
+                    <label><input type="radio" name="q12" value="8"> 8</label>
+                    <label><input type="radio" name="q12" value="9"> 9</label>
+                    <label><input type="radio" name="q12" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>13. Dinamik ve hareketli bir yapım vardır.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q13" value="1"> 1</label>
+                    <label><input type="radio" name="q13" value="2"> 2</label>
+                    <label><input type="radio" name="q13" value="3"> 3</label>
+                    <label><input type="radio" name="q13" value="4"> 4</label>
+                    <label><input type="radio" name="q13" value="5"> 5</label>
+                    <label><input type="radio" name="q13" value="6"> 6</label>
+                    <label><input type="radio" name="q13" value="7"> 7</label>
+                    <label><input type="radio" name="q13" value="8"> 8</label>
+                    <label><input type="radio" name="q13" value="9"> 9</label>
+                    <label><input type="radio" name="q13" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>14. Dini ve manevi konular üzerinde düşünürüm.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q14" value="1"> 1</label>
+                    <label><input type="radio" name="q14" value="2"> 2</label>
+                    <label><input type="radio" name="q14" value="3"> 3</label>
+                    <label><input type="radio" name="q14" value="4"> 4</label>
+                    <label><input type="radio" name="q14" value="5"> 5</label>
+                    <label><input type="radio" name="q14" value="6"> 6</label>
+                    <label><input type="radio" name="q14" value="7"> 7</label>
+                    <label><input type="radio" name="q14" value="8"> 8</label>
+                    <label><input type="radio" name="q14" value="9"> 9</label>
+                    <label><input type="radio" name="q14" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>15. Doğal afetlerin nasıl meydana geldiğini öğrenmek hoşuma gider.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q15" value="1"> 1</label>
+                    <label><input type="radio" name="q15" value="2"> 2</label>
+                    <label><input type="radio" name="q15" value="3"> 3</label>
+                    <label><input type="radio" name="q15" value="4"> 4</label>
+                    <label><input type="radio" name="q15" value="5"> 5</label>
+                    <label><input type="radio" name="q15" value="6"> 6</label>
+                    <label><input type="radio" name="q15" value="7"> 7</label>
+                    <label><input type="radio" name="q15" value="8"> 8</label>
+                    <label><input type="radio" name="q15" value="9"> 9</label>
+                    <label><input type="radio" name="q15" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>16. Duygu ve düşüncelerimi yönetebilirim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q16" value="1"> 1</label>
+                    <label><input type="radio" name="q16" value="2"> 2</label>
+                    <label><input type="radio" name="q16" value="3"> 3</label>
+                    <label><input type="radio" name="q16" value="4"> 4</label>
+                    <label><input type="radio" name="q16" value="5"> 5</label>
+                    <label><input type="radio" name="q16" value="6"> 6</label>
+                    <label><input type="radio" name="q16" value="7"> 7</label>
+                    <label><input type="radio" name="q16" value="8"> 8</label>
+                    <label><input type="radio" name="q16" value="9"> 9</label>
+                    <label><input type="radio" name="q16" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>17. Duygu ve düşüncelerimin farkındayım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q17" value="1"> 1</label>
+                    <label><input type="radio" name="q17" value="2"> 2</label>
+                    <label><input type="radio" name="q17" value="3"> 3</label>
+                    <label><input type="radio" name="q17" value="4"> 4</label>
+                    <label><input type="radio" name="q17" value="5"> 5</label>
+                    <label><input type="radio" name="q17" value="6"> 6</label>
+                    <label><input type="radio" name="q17" value="7"> 7</label>
+                    <label><input type="radio" name="q17" value="8"> 8</label>
+                    <label><input type="radio" name="q17" value="9"> 9</label>
+                    <label><input type="radio" name="q17" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>18. El-ayak-göz uyumum iyi düzeydedir.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q18" value="1"> 1</label>
+                    <label><input type="radio" name="q18" value="2"> 2</label>
+                    <label><input type="radio" name="q18" value="3"> 3</label>
+                    <label><input type="radio" name="q18" value="4"> 4</label>
+                    <label><input type="radio" name="q18" value="5"> 5</label>
+                    <label><input type="radio" name="q18" value="6"> 6</label>
+                    <label><input type="radio" name="q18" value="7"> 7</label>
+                    <label><input type="radio" name="q18" value="8"> 8</label>
+                    <label><input type="radio" name="q18" value="9"> 9</label>
+                    <label><input type="radio" name="q18" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>19. Farklı konularda insanları ikna etmeye çalışırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q19" value="1"> 1</label>
+                    <label><input type="radio" name="q19" value="2"> 2</label>
+                    <label><input type="radio" name="q19" value="3"> 3</label>
+                    <label><input type="radio" name="q19" value="4"> 4</label>
+                    <label><input type="radio" name="q19" value="5"> 5</label>
+                    <label><input type="radio" name="q19" value="6"> 6</label>
+                    <label><input type="radio" name="q19" value="7"> 7</label>
+                    <label><input type="radio" name="q19" value="8"> 8</label>
+                    <label><input type="radio" name="q19" value="9"> 9</label>
+                    <label><input type="radio" name="q19" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>20. Finansal piyasaları (altın borsa döviz) takip ederim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q20" value="1"> 1</label>
+                    <label><input type="radio" name="q20" value="2"> 2</label>
+                    <label><input type="radio" name="q20" value="3"> 3</label>
+                    <label><input type="radio" name="q20" value="4"> 4</label>
+                    <label><input type="radio" name="q20" value="5"> 5</label>
+                    <label><input type="radio" name="q20" value="6"> 6</label>
+                    <label><input type="radio" name="q20" value="7"> 7</label>
+                    <label><input type="radio" name="q20" value="8"> 8</label>
+                    <label><input type="radio" name="q20" value="9"> 9</label>
+                    <label><input type="radio" name="q20" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>21. Geri dönüşüm projelerinde görev alırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q21" value="1"> 1</label>
+                    <label><input type="radio" name="q21" value="2"> 2</label>
+                    <label><input type="radio" name="q21" value="3"> 3</label>
+                    <label><input type="radio" name="q21" value="4"> 4</label>
+                    <label><input type="radio" name="q21" value="5"> 5</label>
+                    <label><input type="radio" name="q21" value="6"> 6</label>
+                    <label><input type="radio" name="q21" value="7"> 7</label>
+                    <label><input type="radio" name="q21" value="8"> 8</label>
+                    <label><input type="radio" name="q21" value="9"> 9</label>
+                    <label><input type="radio" name="q21" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>22. Gün içerisinde yapacağım aktiviteleri önceden planlarım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q22" value="1"> 1</label>
+                    <label><input type="radio" name="q22" value="2"> 2</label>
+                    <label><input type="radio" name="q22" value="3"> 3</label>
+                    <label><input type="radio" name="q22" value="4"> 4</label>
+                    <label><input type="radio" name="q22" value="5"> 5</label>
+                    <label><input type="radio" name="q22" value="6"> 6</label>
+                    <label><input type="radio" name="q22" value="7"> 7</label>
+                    <label><input type="radio" name="q22" value="8"> 8</label>
+                    <label><input type="radio" name="q22" value="9"> 9</label>
+                    <label><input type="radio" name="q22" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>23. Gündelik hayatımda düzenli olmaya gayret ederim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q23" value="1"> 1</label>
+                    <label><input type="radio" name="q23" value="2"> 2</label>
+                    <label><input type="radio" name="q23" value="3"> 3</label>
+                    <label><input type="radio" name="q23" value="4"> 4</label>
+                    <label><input type="radio" name="q23" value="5"> 5</label>
+                    <label><input type="radio" name="q23" value="6"> 6</label>
+                    <label><input type="radio" name="q23" value="7"> 7</label>
+                    <label><input type="radio" name="q23" value="8"> 8</label>
+                    <label><input type="radio" name="q23" value="9"> 9</label>
+                    <label><input type="radio" name="q23" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>24. Hayal kurmaktan keyif alırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q24" value="1"> 1</label>
+                    <label><input type="radio" name="q24" value="2"> 2</label>
+                    <label><input type="radio" name="q24" value="3"> 3</label>
+                    <label><input type="radio" name="q24" value="4"> 4</label>
+                    <label><input type="radio" name="q24" value="5"> 5</label>
+                    <label><input type="radio" name="q24" value="6"> 6</label>
+                    <label><input type="radio" name="q24" value="7"> 7</label>
+                    <label><input type="radio" name="q24" value="8"> 8</label>
+                    <label><input type="radio" name="q24" value="9"> 9</label>
+                    <label><input type="radio" name="q24" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>25. Hayatta anlamın varlığıyla ilgili düşünürüm.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q25" value="1"> 1</label>
+                    <label><input type="radio" name="q25" value="2"> 2</label>
+                    <label><input type="radio" name="q25" value="3"> 3</label>
+                    <label><input type="radio" name="q25" value="4"> 4</label>
+                    <label><input type="radio" name="q25" value="5"> 5</label>
+                    <label><input type="radio" name="q25" value="6"> 6</label>
+                    <label><input type="radio" name="q25" value="7"> 7</label>
+                    <label><input type="radio" name="q25" value="8"> 8</label>
+                    <label><input type="radio" name="q25" value="9"> 9</label>
+                    <label><input type="radio" name="q25" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>26. Hayvanlar için yuva tasarlamak isterim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q26" value="1"> 1</label>
+                    <label><input type="radio" name="q26" value="2"> 2</label>
+                    <label><input type="radio" name="q26" value="3"> 3</label>
+                    <label><input type="radio" name="q26" value="4"> 4</label>
+                    <label><input type="radio" name="q26" value="5"> 5</label>
+                    <label><input type="radio" name="q26" value="6"> 6</label>
+                    <label><input type="radio" name="q26" value="7"> 7</label>
+                    <label><input type="radio" name="q26" value="8"> 8</label>
+                    <label><input type="radio" name="q26" value="9"> 9</label>
+                    <label><input type="radio" name="q26" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>27. Hayvanlar ve bitkilerin varlığını ve gelişimini önemserim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q27" value="1"> 1</label>
+                    <label><input type="radio" name="q27" value="2"> 2</label>
+                    <label><input type="radio" name="q27" value="3"> 3</label>
+                    <label><input type="radio" name="q27" value="4"> 4</label>
+                    <label><input type="radio" name="q27" value="5"> 5</label>
+                    <label><input type="radio" name="q27" value="6"> 6</label>
+                    <label><input type="radio" name="q27" value="7"> 7</label>
+                    <label><input type="radio" name="q27" value="8"> 8</label>
+                    <label><input type="radio" name="q27" value="9"> 9</label>
+                    <label><input type="radio" name="q27" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>28. Herhangi bir nesnenin üç boyutlu görüntüsünü zihnimde canlandırabilirim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q28" value="1"> 1</label>
+                    <label><input type="radio" name="q28" value="2"> 2</label>
+                    <label><input type="radio" name="q28" value="3"> 3</label>
+                    <label><input type="radio" name="q28" value="4"> 4</label>
+                    <label><input type="radio" name="q28" value="5"> 5</label>
+                    <label><input type="radio" name="q28" value="6"> 6</label>
+                    <label><input type="radio" name="q28" value="7"> 7</label>
+                    <label><input type="radio" name="q28" value="8"> 8</label>
+                    <label><input type="radio" name="q28" value="9"> 9</label>
+                    <label><input type="radio" name="q28" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>29. Beste üretme veya şarkı sözü yazma konusunda yetenekliyim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q29" value="1"> 1</label>
+                    <label><input type="radio" name="q29" value="2"> 2</label>
+                    <label><input type="radio" name="q29" value="3"> 3</label>
+                    <label><input type="radio" name="q29" value="4"> 4</label>
+                    <label><input type="radio" name="q29" value="5"> 5</label>
+                    <label><input type="radio" name="q29" value="6"> 6</label>
+                    <label><input type="radio" name="q29" value="7"> 7</label>
+                    <label><input type="radio" name="q29" value="8"> 8</label>
+                    <label><input type="radio" name="q29" value="9"> 9</label>
+                    <label><input type="radio" name="q29" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>30. İlaçların insan vücuduna etkisini araştırmak isterim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q30" value="1"> 1</label>
+                    <label><input type="radio" name="q30" value="2"> 2</label>
+                    <label><input type="radio" name="q30" value="3"> 3</label>
+                    <label><input type="radio" name="q30" value="4"> 4</label>
+                    <label><input type="radio" name="q30" value="5"> 5</label>
+                    <label><input type="radio" name="q30" value="6"> 6</label>
+                    <label><input type="radio" name="q30" value="7"> 7</label>
+                    <label><input type="radio" name="q30" value="8"> 8</label>
+                    <label><input type="radio" name="q30" value="9"> 9</label>
+                    <label><input type="radio" name="q30" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>31. İlgi çekici bir mimari yapının projesini çizmek isterim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q31" value="1"> 1</label>
+                    <label><input type="radio" name="q31" value="2"> 2</label>
+                    <label><input type="radio" name="q31" value="3"> 3</label>
+                    <label><input type="radio" name="q31" value="4"> 4</label>
+                    <label><input type="radio" name="q31" value="5"> 5</label>
+                    <label><input type="radio" name="q31" value="6"> 6</label>
+                    <label><input type="radio" name="q31" value="7"> 7</label>
+                    <label><input type="radio" name="q31" value="8"> 8</label>
+                    <label><input type="radio" name="q31" value="9"> 9</label>
+                    <label><input type="radio" name="q31" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>32. İlgi ve yeteneklerimin neler olduğunun farkındayım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q32" value="1"> 1</label>
+                    <label><input type="radio" name="q32" value="2"> 2</label>
+                    <label><input type="radio" name="q32" value="3"> 3</label>
+                    <label><input type="radio" name="q32" value="4"> 4</label>
+                    <label><input type="radio" name="q32" value="5"> 5</label>
+                    <label><input type="radio" name="q32" value="6"> 6</label>
+                    <label><input type="radio" name="q32" value="7"> 7</label>
+                    <label><input type="radio" name="q32" value="8"> 8</label>
+                    <label><input type="radio" name="q32" value="9"> 9</label>
+                    <label><input type="radio" name="q32" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>33. İnsanın dünyadaki misyonu hakkında kendime sorular sorarım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q33" value="1"> 1</label>
+                    <label><input type="radio" name="q33" value="2"> 2</label>
+                    <label><input type="radio" name="q33" value="3"> 3</label>
+                    <label><input type="radio" name="q33" value="4"> 4</label>
+                    <label><input type="radio" name="q33" value="5"> 5</label>
+                    <label><input type="radio" name="q33" value="6"> 6</label>
+                    <label><input type="radio" name="q33" value="7"> 7</label>
+                    <label><input type="radio" name="q33" value="8"> 8</label>
+                    <label><input type="radio" name="q33" value="9"> 9</label>
+                    <label><input type="radio" name="q33" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>34. İnsanların duygu ve düşüncelerini anlamaya çalışırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q34" value="1"> 1</label>
+                    <label><input type="radio" name="q34" value="2"> 2</label>
+                    <label><input type="radio" name="q34" value="3"> 3</label>
+                    <label><input type="radio" name="q34" value="4"> 4</label>
+                    <label><input type="radio" name="q34" value="5"> 5</label>
+                    <label><input type="radio" name="q34" value="6"> 6</label>
+                    <label><input type="radio" name="q34" value="7"> 7</label>
+                    <label><input type="radio" name="q34" value="8"> 8</label>
+                    <label><input type="radio" name="q34" value="9"> 9</label>
+                    <label><input type="radio" name="q34" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>35. İyi bir dinleyiciyim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q35" value="1"> 1</label>
+                    <label><input type="radio" name="q35" value="2"> 2</label>
+                    <label><input type="radio" name="q35" value="3"> 3</label>
+                    <label><input type="radio" name="q35" value="4"> 4</label>
+                    <label><input type="radio" name="q35" value="5"> 5</label>
+                    <label><input type="radio" name="q35" value="6"> 6</label>
+                    <label><input type="radio" name="q35" value="7"> 7</label>
+                    <label><input type="radio" name="q35" value="8"> 8</label>
+                    <label><input type="radio" name="q35" value="9"> 9</label>
+                    <label><input type="radio" name="q35" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>36. Kişilerarası sorunları çözme konusunda becerikliyim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q36" value="1"> 1</label>
+                    <label><input type="radio" name="q36" value="2"> 2</label>
+                    <label><input type="radio" name="q36" value="3"> 3</label>
+                    <label><input type="radio" name="q36" value="4"> 4</label>
+                    <label><input type="radio" name="q36" value="5"> 5</label>
+                    <label><input type="radio" name="q36" value="6"> 6</label>
+                    <label><input type="radio" name="q36" value="7"> 7</label>
+                    <label><input type="radio" name="q36" value="8"> 8</label>
+                    <label><input type="radio" name="q36" value="9"> 9</label>
+                    <label><input type="radio" name="q36" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>37. Konuşurken jest ve mimiklerimi aktif kullanırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q37" value="1"> 1</label>
+                    <label><input type="radio" name="q37" value="2"> 2</label>
+                    <label><input type="radio" name="q37" value="3"> 3</label>
+                    <label><input type="radio" name="q37" value="4"> 4</label>
+                    <label><input type="radio" name="q37" value="5"> 5</label>
+                    <label><input type="radio" name="q37" value="6"> 6</label>
+                    <label><input type="radio" name="q37" value="7"> 7</label>
+                    <label><input type="radio" name="q37" value="8"> 8</label>
+                    <label><input type="radio" name="q37" value="9"> 9</label>
+                    <label><input type="radio" name="q37" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>38. Küresel ısınma sorunu için neler yapılabileceği üzerine düşünürüm.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q38" value="1"> 1</label>
+                    <label><input type="radio" name="q38" value="2"> 2</label>
+                    <label><input type="radio" name="q38" value="3"> 3</label>
+                    <label><input type="radio" name="q38" value="4"> 4</label>
+                    <label><input type="radio" name="q38" value="5"> 5</label>
+                    <label><input type="radio" name="q38" value="6"> 6</label>
+                    <label><input type="radio" name="q38" value="7"> 7</label>
+                    <label><input type="radio" name="q38" value="8"> 8</label>
+                    <label><input type="radio" name="q38" value="9"> 9</label>
+                    <label><input type="radio" name="q38" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>39. Matematik dersinde başarılıyım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q39" value="1"> 1</label>
+                    <label><input type="radio" name="q39" value="2"> 2</label>
+                    <label><input type="radio" name="q39" value="3"> 3</label>
+                    <label><input type="radio" name="q39" value="4"> 4</label>
+                    <label><input type="radio" name="q39" value="5"> 5</label>
+                    <label><input type="radio" name="q39" value="6"> 6</label>
+                    <label><input type="radio" name="q39" value="7"> 7</label>
+                    <label><input type="radio" name="q39" value="8"> 8</label>
+                    <label><input type="radio" name="q39" value="9"> 9</label>
+                    <label><input type="radio" name="q39" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>40. Mikroskop aracılığıyla virüs bakteri ve hücreleri incelemekten keyif alırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q40" value="1"> 1</label>
+                    <label><input type="radio" name="q40" value="2"> 2</label>
+                    <label><input type="radio" name="q40" value="3"> 3</label>
+                    <label><input type="radio" name="q40" value="4"> 4</label>
+                    <label><input type="radio" name="q40" value="5"> 5</label>
+                    <label><input type="radio" name="q40" value="6"> 6</label>
+                    <label><input type="radio" name="q40" value="7"> 7</label>
+                    <label><input type="radio" name="q40" value="8"> 8</label>
+                    <label><input type="radio" name="q40" value="9"> 9</label>
+                    <label><input type="radio" name="q40" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>41. Münazara ve tartışma ortamlarında görev almak isterim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q41" value="1"> 1</label>
+                    <label><input type="radio" name="q41" value="2"> 2</label>
+                    <label><input type="radio" name="q41" value="3"> 3</label>
+                    <label><input type="radio" name="q41" value="4"> 4</label>
+                    <label><input type="radio" name="q41" value="5"> 5</label>
+                    <label><input type="radio" name="q41" value="6"> 6</label>
+                    <label><input type="radio" name="q41" value="7"> 7</label>
+                    <label><input type="radio" name="q41" value="8"> 8</label>
+                    <label><input type="radio" name="q41" value="9"> 9</label>
+                    <label><input type="radio" name="q41" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>42. Okul temsilcisi olmak için çaba sarf ederim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q42" value="1"> 1</label>
+                    <label><input type="radio" name="q42" value="2"> 2</label>
+                    <label><input type="radio" name="q42" value="3"> 3</label>
+                    <label><input type="radio" name="q42" value="4"> 4</label>
+                    <label><input type="radio" name="q42" value="5"> 5</label>
+                    <label><input type="radio" name="q42" value="6"> 6</label>
+                    <label><input type="radio" name="q42" value="7"> 7</label>
+                    <label><input type="radio" name="q42" value="8"> 8</label>
+                    <label><input type="radio" name="q42" value="9"> 9</label>
+                    <label><input type="radio" name="q42" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>43. Olay ve kişiler üzerinde gözlem yapabilme becerisine sahibim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q43" value="1"> 1</label>
+                    <label><input type="radio" name="q43" value="2"> 2</label>
+                    <label><input type="radio" name="q43" value="3"> 3</label>
+                    <label><input type="radio" name="q43" value="4"> 4</label>
+                    <label><input type="radio" name="q43" value="5"> 5</label>
+                    <label><input type="radio" name="q43" value="6"> 6</label>
+                    <label><input type="radio" name="q43" value="7"> 7</label>
+                    <label><input type="radio" name="q43" value="8"> 8</label>
+                    <label><input type="radio" name="q43" value="9"> 9</label>
+                    <label><input type="radio" name="q43" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>44. Olaylar arasında neden-sonuç ilişkisini kurma konusunda yetenekliyim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q44" value="1"> 1</label>
+                    <label><input type="radio" name="q44" value="2"> 2</label>
+                    <label><input type="radio" name="q44" value="3"> 3</label>
+                    <label><input type="radio" name="q44" value="4"> 4</label>
+                    <label><input type="radio" name="q44" value="5"> 5</label>
+                    <label><input type="radio" name="q44" value="6"> 6</label>
+                    <label><input type="radio" name="q44" value="7"> 7</label>
+                    <label><input type="radio" name="q44" value="8"> 8</label>
+                    <label><input type="radio" name="q44" value="9"> 9</label>
+                    <label><input type="radio" name="q44" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>45. Otomobil bakım ve tamir işlerinden hoşlanırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q45" value="1"> 1</label>
+                    <label><input type="radio" name="q45" value="2"> 2</label>
+                    <label><input type="radio" name="q45" value="3"> 3</label>
+                    <label><input type="radio" name="q45" value="4"> 4</label>
+                    <label><input type="radio" name="q45" value="5"> 5</label>
+                    <label><input type="radio" name="q45" value="6"> 6</label>
+                    <label><input type="radio" name="q45" value="7"> 7</label>
+                    <label><input type="radio" name="q45" value="8"> 8</label>
+                    <label><input type="radio" name="q45" value="9"> 9</label>
+                    <label><input type="radio" name="q45" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>46. Resim çizmekten hoşlanırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q46" value="1"> 1</label>
+                    <label><input type="radio" name="q46" value="2"> 2</label>
+                    <label><input type="radio" name="q46" value="3"> 3</label>
+                    <label><input type="radio" name="q46" value="4"> 4</label>
+                    <label><input type="radio" name="q46" value="5"> 5</label>
+                    <label><input type="radio" name="q46" value="6"> 6</label>
+                    <label><input type="radio" name="q46" value="7"> 7</label>
+                    <label><input type="radio" name="q46" value="8"> 8</label>
+                    <label><input type="radio" name="q46" value="9"> 9</label>
+                    <label><input type="radio" name="q46" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>47. Sınıf başkanlığı için aday olmayı düşünürüm.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q47" value="1"> 1</label>
+                    <label><input type="radio" name="q47" value="2"> 2</label>
+                    <label><input type="radio" name="q47" value="3"> 3</label>
+                    <label><input type="radio" name="q47" value="4"> 4</label>
+                    <label><input type="radio" name="q47" value="5"> 5</label>
+                    <label><input type="radio" name="q47" value="6"> 6</label>
+                    <label><input type="radio" name="q47" value="7"> 7</label>
+                    <label><input type="radio" name="q47" value="8"> 8</label>
+                    <label><input type="radio" name="q47" value="9"> 9</label>
+                    <label><input type="radio" name="q47" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>48. Sosyal aktivitelerden keyif alırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q48" value="1"> 1</label>
+                    <label><input type="radio" name="q48" value="2"> 2</label>
+                    <label><input type="radio" name="q48" value="3"> 3</label>
+                    <label><input type="radio" name="q48" value="4"> 4</label>
+                    <label><input type="radio" name="q48" value="5"> 5</label>
+                    <label><input type="radio" name="q48" value="6"> 6</label>
+                    <label><input type="radio" name="q48" value="7"> 7</label>
+                    <label><input type="radio" name="q48" value="8"> 8</label>
+                    <label><input type="radio" name="q48" value="9"> 9</label>
+                    <label><input type="radio" name="q48" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>49. Spor yapmak benim yaşam tarzımdır.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q49" value="1"> 1</label>
+                    <label><input type="radio" name="q49" value="2"> 2</label>
+                    <label><input type="radio" name="q49" value="3"> 3</label>
+                    <label><input type="radio" name="q49" value="4"> 4</label>
+                    <label><input type="radio" name="q49" value="5"> 5</label>
+                    <label><input type="radio" name="q49" value="6"> 6</label>
+                    <label><input type="radio" name="q49" value="7"> 7</label>
+                    <label><input type="radio" name="q49" value="8"> 8</label>
+                    <label><input type="radio" name="q49" value="9"> 9</label>
+                    <label><input type="radio" name="q49" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>50. Şiir veya hikâye yazma konusunda becerikliyim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q50" value="1"> 1</label>
+                    <label><input type="radio" name="q50" value="2"> 2</label>
+                    <label><input type="radio" name="q50" value="3"> 3</label>
+                    <label><input type="radio" name="q50" value="4"> 4</label>
+                    <label><input type="radio" name="q50" value="5"> 5</label>
+                    <label><input type="radio" name="q50" value="6"> 6</label>
+                    <label><input type="radio" name="q50" value="7"> 7</label>
+                    <label><input type="radio" name="q50" value="8"> 8</label>
+                    <label><input type="radio" name="q50" value="9"> 9</label>
+                    <label><input type="radio" name="q50" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>51. Teleskop ile gökyüzündeki gezegenleri incelemek isterim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q51" value="1"> 1</label>
+                    <label><input type="radio" name="q51" value="2"> 2</label>
+                    <label><input type="radio" name="q51" value="3"> 3</label>
+                    <label><input type="radio" name="q51" value="4"> 4</label>
+                    <label><input type="radio" name="q51" value="5"> 5</label>
+                    <label><input type="radio" name="q51" value="6"> 6</label>
+                    <label><input type="radio" name="q51" value="7"> 7</label>
+                    <label><input type="radio" name="q51" value="8"> 8</label>
+                    <label><input type="radio" name="q51" value="9"> 9</label>
+                    <label><input type="radio" name="q51" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>52. Topluluk karşısında güzel ve etkili konuşurum.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q52" value="1"> 1</label>
+                    <label><input type="radio" name="q52" value="2"> 2</label>
+                    <label><input type="radio" name="q52" value="3"> 3</label>
+                    <label><input type="radio" name="q52" value="4"> 4</label>
+                    <label><input type="radio" name="q52" value="5"> 5</label>
+                    <label><input type="radio" name="q52" value="6"> 6</label>
+                    <label><input type="radio" name="q52" value="7"> 7</label>
+                    <label><input type="radio" name="q52" value="8"> 8</label>
+                    <label><input type="radio" name="q52" value="9"> 9</label>
+                    <label><input type="radio" name="q52" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>53. Müzik sesine karşı duyarlıyım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q53" value="1"> 1</label>
+                    <label><input type="radio" name="q53" value="2"> 2</label>
+                    <label><input type="radio" name="q53" value="3"> 3</label>
+                    <label><input type="radio" name="q53" value="4"> 4</label>
+                    <label><input type="radio" name="q53" value="5"> 5</label>
+                    <label><input type="radio" name="q53" value="6"> 6</label>
+                    <label><input type="radio" name="q53" value="7"> 7</label>
+                    <label><input type="radio" name="q53" value="8"> 8</label>
+                    <label><input type="radio" name="q53" value="9"> 9</label>
+                    <label><input type="radio" name="q53" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>54. Yabancı dil öğrenmeyi severim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q54" value="1"> 1</label>
+                    <label><input type="radio" name="q54" value="2"> 2</label>
+                    <label><input type="radio" name="q54" value="3"> 3</label>
+                    <label><input type="radio" name="q54" value="4"> 4</label>
+                    <label><input type="radio" name="q54" value="5"> 5</label>
+                    <label><input type="radio" name="q54" value="6"> 6</label>
+                    <label><input type="radio" name="q54" value="7"> 7</label>
+                    <label><input type="radio" name="q54" value="8"> 8</label>
+                    <label><input type="radio" name="q54" value="9"> 9</label>
+                    <label><input type="radio" name="q54" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>55. Yardıma ihtiyacı olan insanlara el uzatırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q55" value="1"> 1</label>
+                    <label><input type="radio" name="q55" value="2"> 2</label>
+                    <label><input type="radio" name="q55" value="3"> 3</label>
+                    <label><input type="radio" name="q55" value="4"> 4</label>
+                    <label><input type="radio" name="q55" value="5"> 5</label>
+                    <label><input type="radio" name="q55" value="6"> 6</label>
+                    <label><input type="radio" name="q55" value="7"> 7</label>
+                    <label><input type="radio" name="q55" value="8"> 8</label>
+                    <label><input type="radio" name="q55" value="9"> 9</label>
+                    <label><input type="radio" name="q55" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>56. Yaşam amacı maneviyat inanç gibi soyut kavramlar üzerine kafa yorarım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q56" value="1"> 1</label>
+                    <label><input type="radio" name="q56" value="2"> 2</label>
+                    <label><input type="radio" name="q56" value="3"> 3</label>
+                    <label><input type="radio" name="q56" value="4"> 4</label>
+                    <label><input type="radio" name="q56" value="5"> 5</label>
+                    <label><input type="radio" name="q56" value="6"> 6</label>
+                    <label><input type="radio" name="q56" value="7"> 7</label>
+                    <label><input type="radio" name="q56" value="8"> 8</label>
+                    <label><input type="radio" name="q56" value="9"> 9</label>
+                    <label><input type="radio" name="q56" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>57. Tümevarım ve tümdengelim gibi akıl yürütme yöntemlerini kullanırım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q57" value="1"> 1</label>
+                    <label><input type="radio" name="q57" value="2"> 2</label>
+                    <label><input type="radio" name="q57" value="3"> 3</label>
+                    <label><input type="radio" name="q57" value="4"> 4</label>
+                    <label><input type="radio" name="q57" value="5"> 5</label>
+                    <label><input type="radio" name="q57" value="6"> 6</label>
+                    <label><input type="radio" name="q57" value="7"> 7</label>
+                    <label><input type="radio" name="q57" value="8"> 8</label>
+                    <label><input type="radio" name="q57" value="9"> 9</label>
+                    <label><input type="radio" name="q57" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>58. Ders çalışırken çözdüğüm soru sayısı için çizelge tutarım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q58" value="1"> 1</label>
+                    <label><input type="radio" name="q58" value="2"> 2</label>
+                    <label><input type="radio" name="q58" value="3"> 3</label>
+                    <label><input type="radio" name="q58" value="4"> 4</label>
+                    <label><input type="radio" name="q58" value="5"> 5</label>
+                    <label><input type="radio" name="q58" value="6"> 6</label>
+                    <label><input type="radio" name="q58" value="7"> 7</label>
+                    <label><input type="radio" name="q58" value="8"> 8</label>
+                    <label><input type="radio" name="q58" value="9"> 9</label>
+                    <label><input type="radio" name="q58" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>59. İklim değişikliği gibi küresel sorunların çözümü hakkında beyin egzersizleri yaparım.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q59" value="1"> 1</label>
+                    <label><input type="radio" name="q59" value="2"> 2</label>
+                    <label><input type="radio" name="q59" value="3"> 3</label>
+                    <label><input type="radio" name="q59" value="4"> 4</label>
+                    <label><input type="radio" name="q59" value="5"> 5</label>
+                    <label><input type="radio" name="q59" value="6"> 6</label>
+                    <label><input type="radio" name="q59" value="7"> 7</label>
+                    <label><input type="radio" name="q59" value="8"> 8</label>
+                    <label><input type="radio" name="q59" value="9"> 9</label>
+                    <label><input type="radio" name="q59" value="10"> 10</label>
+                </div>
+            </div>
+        
+            <div class="question-container">
+                <p>60. Enstrüman çalmayı kolaylıkla öğrenebilirim.</p>
+                <div class="radio-container">
+                    <label><input type="radio" name="q60" value="1"> 1</label>
+                    <label><input type="radio" name="q60" value="2"> 2</label>
+                    <label><input type="radio" name="q60" value="3"> 3</label>
+                    <label><input type="radio" name="q60" value="4"> 4</label>
+                    <label><input type="radio" name="q60" value="5"> 5</label>
+                    <label><input type="radio" name="q60" value="6"> 6</label>
+                    <label><input type="radio" name="q60" value="7"> 7</label>
+                    <label><input type="radio" name="q60" value="8"> 8</label>
+                    <label><input type="radio" name="q60" value="9"> 9</label>
+                    <label><input type="radio" name="q60" value="10"> 10</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="sonuclariHesapla()">Anketi Tamamla</button>
+        </form>
+        <div id="sonuc"></div>
+    </div>
+
+    <div class="result-container" style="display: none;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sonuç Türü</th>
+                    <th>Sonuç</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>En yüksek mesleki kişilik türünüz</td>
+                    <td id="resultMeslekiKisilik">Arastirici, Geleneksel, Gercekci, Girisimci, Sanatci, Sosyal</td>
+                </tr>
+                <tr>
+                    <td>En yüksek zekâ türünüz</td>
+                    <td id="resultZeka">Dogaci, Gorsel, Icsel, Mantiksal, Kinestetik, Kisisel, Muziksel, Sozel, Varoluscu</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn-close" onclick="sonuclariKapat()">Kapat</button>
+    </div>
+
+
+
+</body></html>
